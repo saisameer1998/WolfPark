@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class Vehicles extends WolfPark {
 
-    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sgguttha";
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
@@ -26,14 +26,28 @@ public class Vehicles extends WolfPark {
     // this.year = year;
     // }
 
-    public static void GetVehicleInfo(String driver_id) throws SQLException {
+    public static void GetVehicleInfo(String car_license_number) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
         try {
-            String sql = "SELECT * FROM vehicles WHERE driver_id = ?";
+            String sql = "SELECT * FROM vehicles WHERE car_license_number = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, driver_id);
+            preparedStatement.setString(1, car_license_number);
             result = preparedStatement.executeQuery();
+            while (result.next()) {
+                String carLicenseNumber = result.getString("car_license_number");
+                String model = result.getString("model");
+                String color = result.getString("color");
+                String manufacturer = result.getString("manufacturer");
+                int year = result.getInt("year");
+
+                System.out.println("Car License Number: " + carLicenseNumber);
+                System.out.println("Model: " + model);
+                System.out.println("Color: " + color);
+                System.out.println("Manufacturer: " + manufacturer);
+                System.out.println("Year: " + year);
+                System.out.println("--------------------------");
+            }
             // Process the ResultSet or return it as needed
         } catch (SQLException e) {
             e.printStackTrace();

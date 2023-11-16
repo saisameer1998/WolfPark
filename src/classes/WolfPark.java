@@ -127,7 +127,7 @@ class WolfPark {
             switch (choice) {
                 case 1:
                     System.out.println("Getting vehicle information...");
-                    System.out.println("Enter Driver ID: ");
+                    System.out.println("Enter car license number: ");
                     String driverID = scanner.nextLine();
                     Vehicles.GetVehicleInfo(driverID);
                     // Print Result
