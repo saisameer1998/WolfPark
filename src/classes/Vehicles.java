@@ -43,8 +43,7 @@ public class Vehicles extends WolfPark {
     }
 
     public static void AddVehicle(String car_license_number, String driver_id, String model, String color,
-            String manufacturer,
-            int year) throws SQLException {
+            String manufacturer, int year) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "INSERT INTO vehicles VALUES (?, ?, ?, ?, ?, ?)";
