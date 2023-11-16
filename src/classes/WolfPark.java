@@ -105,7 +105,7 @@ class WolfPark {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Getting vehicle info...");
+                    System.out.println("Getting vehicle information...");
                     System.out.println("Enter Driver ID: ");
                     String driverID = scanner.nextLine();
                     Vehicles.GetVehicleInfo(driverID);
@@ -279,12 +279,12 @@ class WolfPark {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Inserting lot information...");
+                    System.out.println("Adding parking lot...");
                     System.out.print("Enter lot name: ");
                     lotName = scanner.nextLine();
                     System.out.print("Enter address: ");
                     address = scanner.nextLine();
-                    ParkingLot.insertParkingLotInfo(lotName, address);
+                    ParkingLot.addParkingLot(lotName, address);
                     break;
                 case 2:
                     System.out.println("Updating lot information...");
@@ -298,7 +298,7 @@ class WolfPark {
                     System.out.println("Deleting lot...");
                     System.out.print("Enter lot name to delete: ");
                     lotName = scanner.nextLine();
-                    ParkingLot.deleteParkingLotInfo(lotName);
+                    ParkingLot.deleteParkingLot(lotName);
                     break;
                 case 0:
                     System.out.println("Exiting parking lot operations...");
@@ -313,11 +313,9 @@ class WolfPark {
         scanner.close();
     }
 
-    private static void handleZoneOperations() {
+    private static void handleZoneOperations() throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int choice;
-
-        // Zone zone = new Zone();
 
         do {
             Menu.displayZoneMenu();
@@ -325,18 +323,38 @@ class WolfPark {
             choice = scanner.nextInt();
             scanner.nextLine();
 
+            String zoneId;
+            String zoneName;
+
             switch (choice) {
                 case 1:
-                    // enterZoneInfo
+                    System.out.println("Adding zone...");
+                    System.out.print("Enter zone ID: ");
+                    zoneId = scanner.nextLine();
+                    System.out.print("Enter zone name: ");
+                    zoneName = scanner.nextLine();
+                    Zone.addZone(zoneId);
                     break;
                 case 2:
-                    // updateZoneInfo
+                    System.out.println("Updating zone information...");
+                    System.out.print("Enter zone ID to update: ");
+                    zoneId = scanner.nextLine();
+                    System.out.print("Enter new zone name: ");
+                    zoneName = scanner.nextLine();
+                    Zone.updateZoneInfo(zoneId, zoneName);
                     break;
                 case 3:
-                    // deleteZoneInfo
+                    System.out.println("Deleting zone...");
+                    System.out.print("Enter zone ID to delete: ");
+                    zoneId = scanner.nextLine();
+                    Zone.deleteZone(zoneId);
                     break;
                 case 4:
-                    // getZoneInfo
+                    System.out.println("Getting zone information...");
+                    System.out.print("Enter zone ID to get information: ");
+                    zoneId = scanner.nextLine();
+                    Zone.getZoneInfo(zoneId);
+                    // Display Results
                     break;
                 case 0:
                     System.out.println("Exiting zone operations...");

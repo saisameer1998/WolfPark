@@ -19,7 +19,7 @@ public class ParkingLot extends WolfPark {
     // this.address = address;
     // }
 
-    public static void insertParkingLotInfo(String lotName, String address) throws SQLException {
+    public static void addParkingLot(String lotName, String address) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "INSERT INTO parking_lots VALUES (?, ?)";
@@ -49,7 +49,7 @@ public class ParkingLot extends WolfPark {
         }
     }
 
-    public static void deleteParkingLotInfo(String lotName) throws SQLException {
+    public static void deleteParkingLot(String lotName) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "DELETE FROM parking_lots WHERE lotName = ?";

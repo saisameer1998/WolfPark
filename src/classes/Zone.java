@@ -18,7 +18,7 @@ public class Zone extends WolfPark {
     // this.zoneId = zoneId;
     // }
 
-    public static void enterZoneInfo(String zoneId) throws SQLException {
+    public static void addZone(String zoneId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "INSERT INTO zone_assignments VALUES (?)";
@@ -47,7 +47,7 @@ public class Zone extends WolfPark {
         }
     }
 
-    public static void deleteZoneInfo(String zoneId) throws SQLException {
+    public static void deleteZone(String zoneId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "DELETE FROM zones WHERE zone_id = ?";
