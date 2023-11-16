@@ -21,7 +21,8 @@ public class Driver extends WolfPark {
     // this.disability = disability;
     // }
 
-    public void enterDriverInfo(String driver_id, String name, String status, String disability) throws SQLException {
+    public static void addDriver(String driver_id, String name, String status, String disability)
+            throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "INSERT INTO drivers VALUES (?, ? ,? ,?)";
@@ -38,7 +39,7 @@ public class Driver extends WolfPark {
         }
     }
 
-    public void updateDriverInfo(String name, String driver_id) throws SQLException {
+    public static void updateDriverInfo(String driver_id, String name) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "UPDATE drivers SET name = ? WHERE driver_id = ?";
@@ -53,7 +54,7 @@ public class Driver extends WolfPark {
         }
     }
 
-    public void deleteDriverInfo(String driver_id) throws SQLException {
+    public static void deleteDriver(String driver_id) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "DELETE FROM drivers WHERE driver_id = ?";

@@ -14,6 +14,7 @@ public class Citation extends WolfPark {
 //        this.lotName = lotName;
 //        this.address = address;
 //    }
+
 	String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
 	String user = "sguttha";
 	String pswd = "Maria@MegaMind1";

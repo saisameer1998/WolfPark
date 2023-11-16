@@ -48,11 +48,14 @@ class WolfPark {
         scanner.close();
     }
 
-    private static void handleDriverOperations() {
+    private static void handleDriverOperations() throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        // Driver driver = new Driver();
+        String driverId;
+        String driverName;
+        String driverStatus;
+        String driverDisability;
 
         do {
             Menu.displayDriverMenu();
@@ -62,16 +65,34 @@ class WolfPark {
 
             switch (choice) {
                 case 1:
-                    // enterDriverInfo
+                    System.out.println("Adding driver...");
+                    System.out.print("Enter driver ID: ");
+                    driverId = scanner.nextLine();
+                    System.out.print("Enter driver name: ");
+                    driverName = scanner.nextLine();
+                    System.out.print("Enter driver status: ");
+                    driverStatus = scanner.nextLine();
+                    System.out.print("Enter driver disability: ");
+                    driverDisability = scanner.nextLine();
+                    Driver.addDriver(driverId, driverName, driverStatus, driverDisability);
                     break;
                 case 2:
-                    // updateDriverInfo
+                    System.out.println("Updating driver information...");
+                    System.out.print("Enter driver ID to update: ");
+                    driverId = scanner.nextLine();
+                    System.out.print("Enter new driver name: ");
+                    driverName = scanner.nextLine();
+                    Driver.updateDriverInfo(driverId, driverName);
+                    // Add more updates
                     break;
                 case 3:
-                    // deleteDriverInfo
+                    System.out.println("Deleting driver...");
+                    System.out.print("Enter driver ID to delete: ");
+                    driverId = scanner.nextLine();
+                    Driver.deleteDriver(driverId);
                     break;
                 case 4:
-                    // getEmpPermCount
+                    // Driver.getEmpPermCount();
                     break;
                 case 0:
                     System.out.println("Exiting driver operations...");
@@ -167,21 +188,21 @@ class WolfPark {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+        String permitId;
+        String lotName;
+        String zoneId;
+        String spaceType;
+        String startDate;
+        String expirationDate;
+        String expirationTime;
+        String driverId;
+        String permitType;
+
         do {
             Menu.displayPermitMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
-
-            String permitId;
-            String lotName;
-            String zoneId;
-            String spaceType;
-            String startDate;
-            String expirationDate;
-            String expirationTime;
-            String driverId;
-            String permitType;
 
             switch (choice) {
                 case 1:
@@ -317,14 +338,14 @@ class WolfPark {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+        String zoneId;
+        String zoneName;
+
         do {
             Menu.displayZoneMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
-
-            String zoneId;
-            String zoneName;
 
             switch (choice) {
                 case 1:
@@ -373,14 +394,14 @@ class WolfPark {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+        int spaceNumber;
+        String spaceType;
+
         do {
             Menu.displaySpaceMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
-
-            int spaceNumber;
-            String spaceType;
 
             switch (choice) {
                 case 1:
