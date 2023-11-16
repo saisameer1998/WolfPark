@@ -91,7 +91,7 @@ class WolfPark {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        Vehicles vehicles = new Vehicles();
+        // Vehicles vehicles = new Vehicles();
 
         do {
             menu.displayVehicleMenu();
@@ -101,16 +101,16 @@ class WolfPark {
 
             switch (choice) {
                 case 1:
-                    vehicles.GetVehicleInfo("null");
+                    // vehicles.GetVehicleInfo("null");
                     break;
                 case 2:
-                    vehicles.AddVehicle("null", "null", "null", "null", "null", 0);
+                    // vehicles.AddVehicle("null", "null", "null", "null", "null", 0);
                     break;
                 case 3:
-                    vehicles.DeleteVehicle("null");
+                    // vehicles.DeleteVehicle("null");
                     break;
                 case 4:
-                    vehicles.UpdateVehicle("null", "null", "null", "null", 0);
+                    // vehicles.UpdateVehicle("null", "null", "null", "null", 0);
                     break;
                 case 0:
                     System.out.println("Exiting vehicle operations...");
@@ -171,6 +171,8 @@ class WolfPark {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+        // ParkingLot lot = new ParkingLot();
+
         do {
             menu.displayParkingLotMenu();
             System.out.print("Enter your choice: ");
@@ -189,6 +191,7 @@ class WolfPark {
                     break;
                 case 0:
                     System.out.println("Exiting parking lot operations...");
+                    menu.displayMainMenu();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
@@ -203,11 +206,13 @@ class WolfPark {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+        // Zone zone = new Zone();
+
         do {
             menu.displayZoneMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline left after nextInt()
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -239,11 +244,13 @@ class WolfPark {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+        // Space space = new Space();
+
         do {
             menu.displaySpaceMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline left after nextInt()
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -275,33 +282,36 @@ class WolfPark {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+        // Citation citation = new Citation();
+
         do {
             menu.displayCitationMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline left after nextInt()
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    //updateCitationPaymentStatus
+                    // updateCitationPaymentStatus
                     break;
                 case 2:
-                    //generateCitation
+                    // generateCitation
                     break;
                 case 3:
-                    //updateCitation
+                    // updateCitation
                     break;
                 case 4:
-                    //payCitationFee
+                    // payCitationFee
                     break;
                 case 5:
-                    //getCitationReport
+                    // getCitationReport
                     break;
                 case 6:
-                    //getViolatedCarsInfo
+                    // getViolatedCarsInfo
                     break;
                 case 0:
                     System.out.println("Exiting citation operations...");
+                    menu.displayMainMenu();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
