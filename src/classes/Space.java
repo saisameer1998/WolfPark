@@ -20,7 +20,7 @@ public class Space extends WolfPark {
     // this.spaceType = spaceType;
     // }
 
-    public static void enterSpaceInfo(int spaceNumber, String spaceType) throws SQLException {
+    public static void addSpace(int spaceNumber, String spaceType) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "INSERT INTO spaces VALUES (?, ?)";
@@ -50,7 +50,7 @@ public class Space extends WolfPark {
         }
     }
 
-    public static void deleteSpaceInfo(int spaceNumber) throws SQLException {
+    public static void deleteSpace(int spaceNumber) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "DELETE FROM spaces WHERE space_number = ?";

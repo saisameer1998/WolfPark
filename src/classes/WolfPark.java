@@ -369,11 +369,9 @@ class WolfPark {
         scanner.close();
     }
 
-    private static void handleSpaceOperations() {
+    private static void handleSpaceOperations() throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int choice;
-
-        // Space space = new Space();
 
         do {
             Menu.displaySpaceMenu();
@@ -381,18 +379,40 @@ class WolfPark {
             choice = scanner.nextInt();
             scanner.nextLine();
 
+            int spaceNumber;
+            String spaceType;
+
             switch (choice) {
                 case 1:
-                    // enterSpaceInfo
+                    System.out.println("Adding space...");
+                    System.out.print("Enter space number: ");
+                    spaceNumber = scanner.nextInt();
+                    System.out.print("Enter space type: ");
+                    spaceType = scanner.nextLine();
+                    Space.addSpace(spaceNumber, spaceType);
                     break;
                 case 2:
-                    // updateSpaceInfo
+                    System.out.println("Updating space information...");
+                    System.out.print("Enter space number to update: ");
+                    spaceNumber = scanner.nextInt();
+                    System.out.print("Enter new space type: ");
+                    spaceType = scanner.nextLine();
+                    Space.updateSpaceInfo(spaceNumber, spaceType);
                     break;
                 case 3:
-                    // deleteSpaceInfo
+                    System.out.println("Deleting space...");
+                    System.out.print("Enter space number to delete: ");
+                    spaceNumber = scanner.nextInt();
+                    Space.deleteSpace(spaceNumber);
                     break;
                 case 4:
-                    // getAvailableSpace
+                    System.out.println("Getting space information...");
+                    System.out.print("Enter space number: ");
+                    spaceNumber = scanner.nextInt();
+                    System.out.print("Enter space type: ");
+                    spaceType = scanner.nextLine();
+                    Space.getAvailableSpace(spaceNumber, spaceType);
+                    // Display Result
                     break;
                 case 0:
                     System.out.println("Exiting space operations...");
