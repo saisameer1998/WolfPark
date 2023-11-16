@@ -1,6 +1,5 @@
 package classes;
 
-import java.sql.Driver;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -87,11 +86,16 @@ class WolfPark {
         scanner.close();
     }
 
-    private static void handleVehicleOperations() {
+    private static void handleVehicleOperations() throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        // Vehicles vehicles = new Vehicles();
+        String carLicenseNumber;
+        String driverId;
+        String model;
+        String color;
+        String manufacturer;
+        int year;
 
         do {
             Menu.displayVehicleMenu();
@@ -101,16 +105,49 @@ class WolfPark {
 
             switch (choice) {
                 case 1:
-                    // vehicles.GetVehicleInfo("null");
+                    System.out.println("Getting vehicle info...");
+                    System.out.println("Enter Driver ID: ");
+                    String driverID = scanner.nextLine();
+                    Vehicles.GetVehicleInfo(driverID);
+                    // Print result
                     break;
                 case 2:
-                    // vehicles.AddVehicle("null", "null", "null", "null", "null", 0);
+                    System.out.println("Adding a new vehicle...");
+                    System.out.print("Enter car license number: ");
+                    carLicenseNumber = scanner.nextLine();
+                    System.out.print("Enter driver ID: ");
+                    driverId = scanner.nextLine();
+                    System.out.print("Enter model: ");
+                    model = scanner.nextLine();
+                    System.out.print("Enter color: ");
+                    color = scanner.nextLine();
+                    System.out.print("Enter manufacturer: ");
+                    manufacturer = scanner.nextLine();
+                    System.out.print("Enter year: ");
+                    year = scanner.nextInt();
+                    scanner.nextLine();
+                    Vehicles.AddVehicle(carLicenseNumber, driverId, model, color, manufacturer, year);
                     break;
                 case 3:
-                    // vehicles.DeleteVehicle("null");
+                    System.out.println("Deleting a vehicle...");
+                    System.out.print("Enter car license number of the vehicle to delete: ");
+                    carLicenseNumber = scanner.nextLine();
+                    Vehicles.DeleteVehicle(carLicenseNumber);
                     break;
                 case 4:
-                    // vehicles.UpdateVehicle("null", "null", "null", "null", 0);
+                    System.out.println("Updating vehicle information...");
+                    System.out.print("Enter car license number of the vehicle to update: ");
+                    carLicenseNumber = scanner.nextLine();
+                    System.out.print("Enter updated model: ");
+                    model = scanner.nextLine();
+                    System.out.print("Enter updated color: ");
+                    color = scanner.nextLine();
+                    System.out.print("Enter updated manufacturer: ");
+                    manufacturer = scanner.nextLine();
+                    System.out.print("Enter updated year: ");
+                    year = scanner.nextInt();
+                    scanner.nextLine();
+                    Vehicles.UpdateVehicle(carLicenseNumber, model, color, manufacturer, year);
                     break;
                 case 0:
                     System.out.println("Exiting vehicle operations...");

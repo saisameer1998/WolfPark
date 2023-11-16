@@ -4,28 +4,29 @@ import java.sql.*;
 
 public class Vehicles extends WolfPark {
 
-    String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
-    String user = "sguttha";
-    String pswd = "Maria@MegaMind1";
+    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+    static String user = "sguttha";
+    static String pswd = "Maria@MegaMind1";
 
-    String car_license_number;
-    String driver_id;
-    String model;
-    String color;
-    String manufacturer;
-    int year;
+    // String car_license_number;
+    // String driver_id;
+    // String model;
+    // String color;
+    // String manufacturer;
+    // int year;
 
-    public Vehicles(String car_license_number, String driver_id, String model, String color, String manufacturer,
-            int year) {
-        this.car_license_number = car_license_number;
-        this.driver_id = driver_id;
-        this.model = model;
-        this.color = color;
-        this.manufacturer = manufacturer;
-        this.year = year;
-    }
+    // public Vehicles(String car_license_number, String driver_id, String model,
+    // String color, String manufacturer,
+    // int year) {
+    // this.car_license_number = car_license_number;
+    // this.driver_id = driver_id;
+    // this.model = model;
+    // this.color = color;
+    // this.manufacturer = manufacturer;
+    // this.year = year;
+    // }
 
-    public void GetVehicleInfo(String driver_id) throws SQLException {
+    public static void GetVehicleInfo(String driver_id) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
         try {
@@ -41,7 +42,8 @@ public class Vehicles extends WolfPark {
         }
     }
 
-    public void AddVehicle(String car_license_number, String driver_id, String model, String color, String manufacturer,
+    public static void AddVehicle(String car_license_number, String driver_id, String model, String color,
+            String manufacturer,
             int year) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
@@ -61,7 +63,7 @@ public class Vehicles extends WolfPark {
         }
     }
 
-    public void DeleteVehicle(String car_license_number) throws SQLException {
+    public static void DeleteVehicle(String car_license_number) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "DELETE FROM vehicles WHERE car_license_number = ?";
@@ -75,7 +77,8 @@ public class Vehicles extends WolfPark {
         }
     }
 
-    public void UpdateVehicle(String car_license_number, String model, String color, String manufacturer, int year)
+    public static void UpdateVehicle(String car_license_number, String model, String color, String manufacturer,
+            int year)
             throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
