@@ -109,7 +109,7 @@ class WolfPark {
                     System.out.println("Enter Driver ID: ");
                     String driverID = scanner.nextLine();
                     Vehicles.GetVehicleInfo(driverID);
-                    // Print result
+                    // Print Result
                     break;
                 case 2:
                     System.out.println("Adding a new vehicle...");
@@ -147,6 +147,7 @@ class WolfPark {
                     System.out.print("Enter updated year: ");
                     year = scanner.nextInt();
                     scanner.nextLine();
+                    // Sepearate Updates
                     Vehicles.UpdateVehicle(carLicenseNumber, model, color, manufacturer, year);
                     break;
                 case 0:
@@ -172,24 +173,83 @@ class WolfPark {
             choice = scanner.nextInt();
             scanner.nextLine();
 
-            Permits permit = new Permits();
+            String permitId;
+            String lotName;
+            String zoneId;
+            String spaceType;
+            String startDate;
+            String expirationDate;
+            String expirationTime;
+            String driverId;
+            String permitType;
 
-            // ASK USER FOR INPUT
             switch (choice) {
                 case 1:
-                    permit.CreatePermitInfo();
+                    System.out.println("Creating a new permit...");
+                    System.out.print("Enter permit ID: ");
+                    permitId = scanner.nextLine();
+                    System.out.print("Enter lot name: ");
+                    lotName = scanner.nextLine();
+                    System.out.print("Enter zone ID: ");
+                    zoneId = scanner.nextLine();
+                    System.out.print("Enter space type: ");
+                    spaceType = scanner.nextLine();
+                    System.out.print("Enter start date (YYYY-MM-DD): ");
+                    startDate = scanner.nextLine();
+                    System.out.print("Enter expiration date (YYYY-MM-DD): ");
+                    expirationDate = scanner.nextLine();
+                    System.out.print("Enter expiration time: ");
+                    expirationTime = scanner.nextLine();
+                    System.out.print("Enter driver ID: ");
+                    driverId = scanner.nextLine();
+                    System.out.print("Enter permit type: ");
+                    permitType = scanner.nextLine();
+                    Permits.CreatePermitInfo(permitId, lotName, zoneId, spaceType, startDate, expirationDate,
+                            expirationTime, driverId, permitType);
                     break;
                 case 2:
-                    permit.UpdatePermitInfo("null", "null");
+                    System.out.println("Updating permit information...");
+                    System.out.print("Enter permit ID of the permit to update: ");
+                    permitId = scanner.nextLine();
+                    System.out.println("Enter updated permit information:");
+                    System.out.print("Lot name: ");
+                    lotName = scanner.nextLine();
+                    System.out.print("Zone ID: ");
+                    zoneId = scanner.nextLine();
+                    System.out.print("Space type: ");
+                    spaceType = scanner.nextLine();
+                    System.out.print("Start date (YYYY-MM-DD): ");
+                    startDate = scanner.nextLine();
+                    System.out.print("Expiration date (YYYY-MM-DD): ");
+                    expirationDate = scanner.nextLine();
+                    System.out.print("Expiration time: ");
+                    expirationTime = scanner.nextLine();
+                    System.out.print("Driver ID: ");
+                    driverId = scanner.nextLine();
+                    System.out.print("Permit type: ");
+                    permitType = scanner.nextLine();
+                    // Separate Updates
+                    Permits.UpdatePermitInfo(lotName, permitId);
                     break;
                 case 3:
-                    permit.DeletePermitInfo("null");
+                    System.out.println("Deleting a permit...");
+                    System.out.print("Enter permit ID of the permit to delete: ");
+                    permitId = scanner.nextLine();
+                    Permits.DeletePermitInfo(permitId);
                     break;
                 case 4:
-                    permit.GetPermitInfo("null");
+                    System.out.println("Getting permit information...");
+                    System.out.print("Enter permit ID: ");
+                    permitId = scanner.nextLine();
+                    Permits.GetPermitInfo(permitId);
+                    // Display Result
                     break;
                 case 5:
-                    permit.IsValidPermit("null");
+                    System.out.println("Checking if the permit is valid...");
+                    System.out.print("Enter permit ID: ");
+                    permitId = scanner.nextLine();
+                    boolean isValid = Permits.IsValidPermit(permitId);
+                    // Method call needs to be fixed
                     break;
                 case 0:
                     System.out.println("Exiting permit operations...");

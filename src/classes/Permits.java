@@ -4,34 +4,35 @@ import java.sql.*;
 
 public class Permits extends WolfPark {
 
-    String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
-    String user = "sguttha";
-    String pswd = "Maria@MegaMind1";
+    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+    static String user = "sguttha";
+    static String pswd = "Maria@MegaMind1";
 
-    String permit_id;
-    String lot_name;
-    String zone_id;
-    String space_type;
-    String start_date;
-    String expiration_date;
-    String expiration_time;
-    String driver_id;
-    String permit_type;
+    // String permit_id;
+    // String lot_name;
+    // String zone_id;
+    // String space_type;
+    // String start_date;
+    // String expiration_date;
+    // String expiration_time;
+    // String driver_id;
+    // String permit_type;
 
-    public void Permits(String permit_id, String lot_name, String zone_id, String space_type, String start_date,
-            String expiration_date, String expiration_time, String driver_id, String permit_type) {
-        this.permit_id = permit_id;
-        this.lot_name = lot_name;
-        this.zone_id = zone_id;
-        this.space_type = space_type;
-        this.start_date = start_date;
-        this.expiration_date = expiration_date;
-        this.expiration_time = expiration_time;
-        this.driver_id = driver_id;
-        this.permit_type = permit_type;
-    }
+    // public void Permits(String permit_id, String lot_name, String zone_id, String space_type, String start_date,
+    //         String expiration_date, String expiration_time, String driver_id, String permit_type) {
+    //     this.permit_id = permit_id;
+    //     this.lot_name = lot_name;
+    //     this.zone_id = zone_id;
+    //     this.space_type = space_type;
+    //     this.start_date = start_date;
+    //     this.expiration_date = expiration_date;
+    //     this.expiration_time = expiration_time;
+    //     this.driver_id = driver_id;
+    //     this.permit_type = permit_type;
+    // }
 
-    public void CreatePermitInfo() throws SQLException {
+    public static void CreatePermitInfo(String permit_id, String lot_name, String zone_id, String space_type, String start_date,
+            String expiration_date, String expiration_time, String driver_id, String permit_type) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "INSERT INTO permits VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -53,7 +54,7 @@ public class Permits extends WolfPark {
         }
     }
 
-    public void UpdatePermitInfo(String updatedLotName, String permitId) throws SQLException {
+    public static void UpdatePermitInfo(String updatedLotName, String permitId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "UPDATE permits SET lot_name = ? WHERE permit_id = ?";
@@ -68,7 +69,7 @@ public class Permits extends WolfPark {
         }
     }
 
-    public void DeletePermitInfo(String permitId) throws SQLException {
+    public static void DeletePermitInfo(String permitId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "DELETE FROM permits WHERE permit_id = ?";
@@ -82,7 +83,7 @@ public class Permits extends WolfPark {
         }
     }
 
-    public ResultSet GetPermitInfo(String permitId) throws SQLException {
+    public static ResultSet GetPermitInfo(String permitId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
         try {
@@ -98,7 +99,8 @@ public class Permits extends WolfPark {
         return result;
     }
 
-    public boolean IsValidPermit(String permitId) throws SQLException {
+    //Fix Query
+    public static boolean IsValidPermit(String permitId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
         try {
