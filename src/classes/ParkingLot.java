@@ -19,7 +19,7 @@ public class ParkingLot extends WolfPark {
     // this.address = address;
     // }
 
-    public static void enterParkingLotInfo(String lotName, String address) throws SQLException {
+    public static void insertParkingLotInfo(String lotName, String address) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "INSERT INTO parking_lots VALUES (?, ?)";

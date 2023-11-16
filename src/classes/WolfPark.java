@@ -264,11 +264,12 @@ class WolfPark {
         scanner.close();
     }
 
-    private static void handleParkingLotOperations() {
+    private static void handleParkingLotOperations() throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        // ParkingLot lot = new ParkingLot();
+        String lotName;
+        String address;
 
         do {
             Menu.displayParkingLotMenu();
@@ -278,13 +279,26 @@ class WolfPark {
 
             switch (choice) {
                 case 1:
-                    // enterParkingLotInfo
+                    System.out.println("Inserting lot information...");
+                    System.out.print("Enter lot name: ");
+                    lotName = scanner.nextLine();
+                    System.out.print("Enter address: ");
+                    address = scanner.nextLine();
+                    ParkingLot.insertParkingLotInfo(lotName, address);
                     break;
                 case 2:
-                    // updateParkingLotInfo
+                    System.out.println("Updating lot information...");
+                    System.out.print("Enter lot name to update: ");
+                    lotName = scanner.nextLine();
+                    System.out.print("Enter new address: ");
+                    String newAddress = scanner.nextLine();
+                    ParkingLot.updateParkingLotInfo(lotName, newAddress);
                     break;
                 case 3:
-                    // deleteParkingLotInfo
+                    System.out.println("Deleting lot...");
+                    System.out.print("Enter lot name to delete: ");
+                    lotName = scanner.nextLine();
+                    ParkingLot.deleteParkingLotInfo(lotName);
                     break;
                 case 0:
                     System.out.println("Exiting parking lot operations...");
