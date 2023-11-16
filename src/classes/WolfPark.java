@@ -11,7 +11,7 @@ class WolfPark {
         int choice;
 
         do {
-            menu.displayMainMenu();
+            Menu.displayMainMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -56,7 +56,7 @@ class WolfPark {
         // Driver driver = new Driver();
 
         do {
-            menu.displayDriverMenu();
+            Menu.displayDriverMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -76,7 +76,7 @@ class WolfPark {
                     break;
                 case 0:
                     System.out.println("Exiting driver operations...");
-                    menu.displayMainMenu();
+                    Menu.displayMainMenu();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
@@ -94,7 +94,7 @@ class WolfPark {
         // Vehicles vehicles = new Vehicles();
 
         do {
-            menu.displayVehicleMenu();
+            Menu.displayVehicleMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -114,7 +114,7 @@ class WolfPark {
                     break;
                 case 0:
                     System.out.println("Exiting vehicle operations...");
-                    menu.displayMainMenu();
+                    Menu.displayMainMenu();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
@@ -130,7 +130,7 @@ class WolfPark {
         int choice;
 
         do {
-            menu.displayPermitMenu();
+            Menu.displayPermitMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -156,7 +156,7 @@ class WolfPark {
                     break;
                 case 0:
                     System.out.println("Exiting permit operations...");
-                    menu.displayMainMenu();
+                    Menu.displayMainMenu();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
@@ -174,7 +174,7 @@ class WolfPark {
         // ParkingLot lot = new ParkingLot();
 
         do {
-            menu.displayParkingLotMenu();
+            Menu.displayParkingLotMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -191,7 +191,7 @@ class WolfPark {
                     break;
                 case 0:
                     System.out.println("Exiting parking lot operations...");
-                    menu.displayMainMenu();
+                    Menu.displayMainMenu();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
@@ -209,7 +209,7 @@ class WolfPark {
         // Zone zone = new Zone();
 
         do {
-            menu.displayZoneMenu();
+            Menu.displayZoneMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -229,7 +229,7 @@ class WolfPark {
                     break;
                 case 0:
                     System.out.println("Exiting zone operations...");
-                    menu.displayMainMenu();
+                    Menu.displayMainMenu();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
@@ -247,7 +247,7 @@ class WolfPark {
         // Space space = new Space();
 
         do {
-            menu.displaySpaceMenu();
+            Menu.displaySpaceMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -267,7 +267,7 @@ class WolfPark {
                     break;
                 case 0:
                     System.out.println("Exiting space operations...");
-                    menu.displayMainMenu();
+                    Menu.displayMainMenu();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
@@ -285,7 +285,7 @@ class WolfPark {
         // Citation citation = new Citation();
 
         do {
-            menu.displayCitationMenu();
+            Menu.displayCitationMenu();
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -311,7 +311,7 @@ class WolfPark {
                     break;
                 case 0:
                     System.out.println("Exiting citation operations...");
-                    menu.displayMainMenu();
+                    Menu.displayMainMenu();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");

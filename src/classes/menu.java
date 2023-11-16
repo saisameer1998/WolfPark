@@ -1,6 +1,6 @@
 package classes;
 
-public class menu {
+public class Menu {
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
@@ -16,6 +16,7 @@ public class menu {
         System.out.println("4. Parking Lot Operations");
         System.out.println("5. Zone Operations");
         System.out.println("6. Space Operations");
+        System.out.println("7. Citation Operations");
         System.out.println("0. Exit");
     }
 
