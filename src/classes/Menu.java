@@ -83,12 +83,25 @@ public class Menu {
     public static void displayCitationMenu() {
         clearScreen();
         System.out.println("\n===== Citation Operations Menu =====");
-        System.out.println("1. Update Citation Payment Status");
-        System.out.println("2. Generate Citation");
-        System.out.println("3. Update Citation");
+        System.out.println("1. Generate Citation");
+        System.out.println("2. Update Citation");
+        System.out.println("3. Delete Citation");
         System.out.println("4. Pay Citation Fee");
         System.out.println("5. Get Citation Report");
         System.out.println("6. Get Violated Cars Information");
+        System.out.println("0. Go back to main menu");
+    }
+
+    public static void displayCitationSubMenu() {
+        clearScreen();
+        System.out.println("\n===== Update Citation Operations Menu =====");
+        System.out.println("1. Update Citation Car License Number");
+        System.out.println("2. Update Citation Lot Name");
+        System.out.println("3. Update Citation Category");
+        System.out.println("4. Update Citation Fee");
+        System.out.println("5. Update Citation Payment Status");
+        System.out.println("6. Update Citation Citation Date");
+        System.out.println("7. Update Citation Citation Time");
         System.out.println("0. Go back to main menu");
     }
 

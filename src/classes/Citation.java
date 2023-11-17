@@ -6,27 +6,27 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Citation extends WolfPark {
-	
-//	String lotName;
-//	String address;
-//	
-//	public ParkingLot(String lotName, String address) {
-//        this.lotName = lotName;
-//        this.address = address;
-//    }
 
-	String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
-	String user = "sguttha";
-	String pswd = "Maria@MegaMind1";
-	
-	public void generateCitation(String citationNumber, String carLicenseNumber, String lotName, 
-									String category, float fee, String paymentStatus) throws SQLException {
+	// String lotName;
+	// String address;
+	//
+	// public ParkingLot(String lotName, String address) {
+	// this.lotName = lotName;
+	// this.address = address;
+	// }
+
+	static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+	static String user = "sguttha";
+	static String pswd = "Maria@MegaMind1";
+
+	public static void generateCitation(String citationNumber, String carLicenseNumber, String lotName,
+			String category, float fee, String paymentStatus) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
 			String sql = "INSERT INTO citations(citation_number, car_license_number," +
-							" citation_date, citation_time, lot_name, category, fee, payment_status)" +
-							" VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					" citation_date, citation_time, lot_name, category, fee, payment_status)" +
+					" VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			String citationDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			String citationTime = LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"));
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -39,16 +39,14 @@ public class Citation extends WolfPark {
 			preparedStatement.setFloat(7, fee);
 			preparedStatement.setString(8, paymentStatus);
 			preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
-            e.printStackTrace();
-        }
-		finally {
-            close(connection);
-    	}
-    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection);
+		}
+	}
 
-	public void UpdateCitationCarLsncNum(String citationNumber, String carLicenseNumber) throws SQLException {
+	public static void updateCitationCarLsncNum(String citationNumber, String carLicenseNumber) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -57,16 +55,14 @@ public class Citation extends WolfPark {
 			preparedStatement.setString(1, carLicenseNumber);
 			preparedStatement.setString(2, citationNumber);
 			preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 	}
 
-	public void UpdateCitationLotName(String citationNumber, String lotName) throws SQLException {
+	public static void updateCitationLotName(String citationNumber, String lotName) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -75,16 +71,14 @@ public class Citation extends WolfPark {
 			preparedStatement.setString(1, lotName);
 			preparedStatement.setString(2, citationNumber);
 			preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 	}
 
-	public void UpdateCitationCategory(String citationNumber, String category) throws SQLException {
+	public static void updateCitationCategory(String citationNumber, String category) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -93,16 +87,14 @@ public class Citation extends WolfPark {
 			preparedStatement.setString(1, category);
 			preparedStatement.setString(2, citationNumber);
 			preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 	}
 
-	public void UpdateCitationFee(String citationNumber, float fee) throws SQLException {
+	public static void updateCitationFee(String citationNumber, float fee) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -111,16 +103,14 @@ public class Citation extends WolfPark {
 			preparedStatement.setFloat(1, fee);
 			preparedStatement.setString(2, citationNumber);
 			preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 	}
 
-	public void UpdateCitationPymntStatus(String citationNumber, String paymentStatus) throws SQLException {
+	public static void updateCitationPymntStatus(String citationNumber, String paymentStatus) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -129,16 +119,14 @@ public class Citation extends WolfPark {
 			preparedStatement.setString(1, paymentStatus);
 			preparedStatement.setString(2, citationNumber);
 			preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 	}
 
-	public void UpdateCitationCitationDate(String citationNumber, String citationDate) throws SQLException {
+	public static void updateCitationDate(String citationNumber, String citationDate) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -147,16 +135,14 @@ public class Citation extends WolfPark {
 			preparedStatement.setString(1, citationDate);
 			preparedStatement.setString(2, citationNumber);
 			preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 	}
 
-	public void UpdateCitationCitationTime(String citationNumber, String citationTime) throws SQLException {
+	public static void updateCitationTime(String citationNumber, String citationTime) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -165,16 +151,14 @@ public class Citation extends WolfPark {
 			preparedStatement.setString(1, citationTime);
 			preparedStatement.setString(2, citationNumber);
 			preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 	}
 
-	public void DeleteCitation(String citationNumber) throws SQLException {
+	public static void deleteCitation(String citationNumber) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -182,56 +166,50 @@ public class Citation extends WolfPark {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, citationNumber);
 			preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 	}
 
-	public void PayCitationFee(String citationNumber) throws SQLException {
+	public static void payCitationFee(String citationNumber) throws SQLException {
 
-		UpdateCitationPymntStatus(citationNumber, "PAID");
+		updateCitationPymntStatus(citationNumber, "PAID");
 	}
 
-	public ResultSet GetCitationReport(String startDate, String endDate) throws SQLException {
+	public static ResultSet getCitationReport(String startDate, String endDate) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		ResultSet result = null;
 		try {
 			String sql = "SELECT lot_name, count(*) as 'Num Citations' FROM citations" +
-							"WHERE citation_date BETWEEN ? AND ? GROUP BY lot_name";
+					"WHERE citation_date BETWEEN ? AND ? GROUP BY lot_name";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, startDate);
 			preparedStatement.setString(2, endDate);
 			result = preparedStatement.executeQuery();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 
 		return result;
 	}
 
-	public ResultSet GetViolatedCarsInfo(String startDate, String endDate) throws SQLException {
+	public static ResultSet getViolatedCarsInfo(String startDate, String endDate) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		ResultSet result = null;
 		try {
 			String sql = "SELECT count(*) as 'Num Violated Cars' FROM citations" +
-							"WHERE payment_status <> 'PAID'";
+					"WHERE payment_status <> 'PAID'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			result = preparedStatement.executeQuery();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			close(connection);
 		}
 
@@ -243,18 +221,20 @@ public class Citation extends WolfPark {
 		Connection connection = null;
 		try {
 			connection = DriverManager.getConnection(jdbcURL, user, pswd);
-		}
-		catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return connection;
 	}
-	
+
 	private static void close(Connection conn) {
-        if(conn != null) {
-            try { conn.close(); } catch(Throwable whatever) {}
-        }
-    }
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (Throwable whatever) {
+			}
+		}
+	}
 
 }
