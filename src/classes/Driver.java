@@ -23,21 +23,44 @@ public class Driver extends WolfPark {
 
     public static void addDriver(String driver_id, String name, String status, String disability)
             throws SQLException {
-        Connection connection = connectToDatabase(jdbcURL, user, pswd);
-        try {
-            String sql = "INSERT INTO drivers VALUES (?, ? ,? ,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    Connection connection = connectToDatabase(jdbcURL, user, pswd);
+
+    try {
+        // Start the transaction
+        connection.setAutoCommit(false);
+
+        String sql = "INSERT INTO drivers VALUES (?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, driver_id);
             preparedStatement.setString(2, name);
             preparedStatement.setString(3, status);
             preparedStatement.setString(4, disability);
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }
+
+        // Commit the transaction if everything is successful
+        connection.commit();
+    } catch (SQLException e) {
+        // Rollback the transaction in case of an exception
+        if (connection != null) {
+            connection.rollback();
+        }
+        e.printStackTrace();
+    } finally {
+        try {
+            // Set auto-commit back to true
+            if (connection != null) {
+                connection.setAutoCommit(true);
+            }
         } finally {
-            close(connection);
+            // Close the connection
+            if (connection != null) {
+                close(connection);
+            }
         }
     }
+}
+
 
     public static void updateDriverInfo(String driver_id, String name) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);

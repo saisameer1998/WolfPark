@@ -27,7 +27,18 @@ public class Menu {
         System.out.println("2. Update Driver Information");
         System.out.println("3. Delete Driver Information");
         System.out.println("4. Get Employee Permit Count");
+        System.out.println("5. Pay Citation Fee");
+        System.out.println("6. Appeal Citation");
         System.out.println("0. Go back to main menu");
+    }
+
+    public static void displayDriverUpdateMenu() {
+        clearScreen();
+        System.out.println("\n===== Driver Update Operations Menu =====");
+        System.out.println("1. Update Driver Name");
+        System.out.println("2. Update Driver Status");
+        System.out.println("3. Update Driver Disability");
+        System.out.println("0. Go back to Driver Menu");
     }
 
     public static void displayVehicleMenu() {
@@ -40,6 +51,17 @@ public class Menu {
         System.out.println("0. Go back to main menu");
     }
 
+    public static void displayVehicleUpdateMenu() {
+        clearScreen();
+        System.out.println("\n===== Vehicle Update Operations Menu =====");
+        System.out.println("1. Update Driver ID");
+        System.out.println("2. Update Vehicle Model");
+        System.out.println("3. Update Vehicle Color");
+        System.out.println("4. Update Vehicle Manufacturer");
+        System.out.println("6. Update Vehicle Year");
+        System.out.println("0. Go back to Vehicle Menu");
+    }
+
     public static void displayPermitMenu() {
         clearScreen();
         System.out.println("\n===== Permit Operations Menu =====");
@@ -48,36 +70,49 @@ public class Menu {
         System.out.println("3. Delete Permit Information");
         System.out.println("4. Get Permit Information");
         System.out.println("5. Check Validity of Permit");
-        System.out.println("0. Go back to main menu");
+        System.out.println("0. Go back to Main Menu");
+    }
+
+    public static void displayPermitUpdateMenu() {
+        clearScreen();
+        System.out.println("\n===== Permit Update Operations Menu =====");
+        System.out.println("1. Update Lot Name");
+        System.out.println("2. Update Zone ID");
+        System.out.println("3. Update Space Type");
+        System.out.println("4. Update Start Date");
+        System.out.println("6. Update Expiration Date");
+        System.out.println("7. Update Expiration Time");
+        System.out.println("8. Update Driver ID");
+        System.out.println("9. Update Permit Type");
+        System.out.println("0. Go back to Permit Menu");
     }
 
     public static void displayParkingLotMenu() {
         clearScreen();
         System.out.println("\n===== Parking Lot Operations Menu =====");
         System.out.println("1. Enter Parking Lot Information");
-        System.out.println("2. Update Parking Lot Information");
+        System.out.println("2. Update Parking Lot Address");
         System.out.println("3. Delete Parking Lot Information");
-        System.out.println("0. Go back to main menu");
+        System.out.println("0. Go back to Main Menu");
     }
 
     public static void displayZoneMenu() {
         clearScreen();
         System.out.println("\n===== Zone Operations Menu =====");
         System.out.println("1. Enter Zone Information");
-        System.out.println("2. Update Zone Information");
-        System.out.println("3. Delete Zone Information");
-        System.out.println("4. Get Zone Information");
-        System.out.println("0. Go back to main menu");
+        System.out.println("2. Delete Zone Information");
+        System.out.println("3. Get Zone Information");
+        System.out.println("0. Go back to Main Menu");
     }
 
     public static void displaySpaceMenu() {
         clearScreen();
         System.out.println("\n===== Space Operations Menu =====");
         System.out.println("1. Enter Space Information");
-        System.out.println("2. Update Space Information");
+        System.out.println("2. Update Space Type");
         System.out.println("3. Delete Space Information");
         System.out.println("4. Get Available Space");
-        System.out.println("0. Go back to main menu");
+        System.out.println("0. Go back to Main Menu");
     }
 
     public static void displayCitationMenu() {
@@ -86,13 +121,12 @@ public class Menu {
         System.out.println("1. Generate Citation");
         System.out.println("2. Update Citation");
         System.out.println("3. Delete Citation");
-        System.out.println("4. Pay Citation Fee");
         System.out.println("5. Get Citation Report");
         System.out.println("6. Get Violated Cars Information");
         System.out.println("0. Go back to main menu");
     }
 
-    public static void displayCitationSubMenu() {
+    public static void displayCitationUpdateMenu() {
         clearScreen();
         System.out.println("\n===== Update Citation Operations Menu =====");
         System.out.println("1. Update Citation Car License Number");

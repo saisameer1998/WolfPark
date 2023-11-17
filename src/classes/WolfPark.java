@@ -315,12 +315,12 @@ class WolfPark {
                     ParkingLot.addParkingLot(lotName, address);
                     break;
                 case 2:
-                    System.out.println("Updating lot information...");
+                    System.out.println("Updating lot address...");
                     System.out.print("Enter lot name to update: ");
                     lotName = scanner.nextLine();
                     System.out.print("Enter new address: ");
                     String newAddress = scanner.nextLine();
-                    ParkingLot.updateParkingLotInfo(lotName, newAddress);
+                    ParkingLot.updateParkingLotAddress(lotName, newAddress);
                     break;
                 case 3:
                     System.out.println("Deleting lot...");
@@ -364,20 +364,12 @@ class WolfPark {
                     Zone.addZone(zoneId);
                     break;
                 case 2:
-                    System.out.println("Updating zone information...");
-                    System.out.print("Enter zone ID to update: ");
-                    zoneId = scanner.nextLine();
-                    System.out.print("Enter new zone name: ");
-                    zoneName = scanner.nextLine();
-                    Zone.updateZoneInfo(zoneId, zoneName);
-                    break;
-                case 3:
                     System.out.println("Deleting zone...");
                     System.out.print("Enter zone ID to delete: ");
                     zoneId = scanner.nextLine();
                     Zone.deleteZone(zoneId);
                     break;
-                case 4:
+                case 3:
                     System.out.println("Getting zone information...");
                     System.out.print("Enter zone ID to get information: ");
                     zoneId = scanner.nextLine();
@@ -426,7 +418,7 @@ class WolfPark {
                     spaceNumber = scanner.nextInt();
                     System.out.print("Enter new space type: ");
                     spaceType = scanner.nextLine();
-                    Space.updateSpaceInfo(spaceNumber, spaceType);
+                    Space.updateSpaceType(spaceNumber, spaceType);
                     break;
                 case 3:
                     System.out.println("Deleting space...");
@@ -436,10 +428,10 @@ class WolfPark {
                     break;
                 case 4:
                     System.out.println("Getting space information...");
-//                    System.out.print("Enter space number: ");
-//                    spaceNumber = scanner.nextInt();
+                    // System.out.print("Enter space number: ");
+                    // spaceNumber = scanner.nextInt();
                     System.out.print("Enter lot name: ");
-                    //scanner.next();
+                    // scanner.next();
                     lotName = scanner.nextLine();
                     System.out.print("Enter space number: ");
                     spaceNumber = scanner.nextInt();
@@ -500,7 +492,7 @@ class WolfPark {
                     break;
                 case 2:
                     System.out.println("What do you want to update: ");
-                    Menu.displayCitationSubMenu();
+                    Menu.displayCitationUpdateMenu();
                     System.out.print("Enter your choice: ");
                     int choice2 = scanner.nextInt();
 
@@ -578,12 +570,6 @@ class WolfPark {
                     Citation.deleteCitation(citationNumber);
                     break;
                 case 4:
-                    System.out.println("Paying citation fee...");
-                    System.out.print("Enter citation number to pay fee: ");
-                    citationNumber = scanner.nextLine();
-                    Citation.payCitationFee(citationNumber);
-                    break;
-                case 5:
                     System.out.println("Getting citation report: ");
                     System.out.print("Enter start date (yyyy-MM-dd): ");
                     startDate = scanner.nextLine();
@@ -592,7 +578,7 @@ class WolfPark {
                     Citation.getCitationReport(startDate, endDate);
                     // DISPLAY RESULT
                     break;
-                case 6:
+                case 5:
                     System.out.println("Getting violated cars information...");
                     System.out.print("Enter start date (yyyy-MM-dd): ");
                     startDate = scanner.nextLine();

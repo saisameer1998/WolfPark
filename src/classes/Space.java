@@ -35,7 +35,7 @@ public class Space extends WolfPark {
         }
     }
 
-    public static void updateSpaceInfo(int spaceNumber, String newSpaceType) throws SQLException {
+    public static void updateSpaceType(int spaceNumber, String newSpaceType) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "UPDATE spaces SET space_type = ? WHERE space_number = ?";
