@@ -48,7 +48,6 @@ public class Vehicles extends WolfPark {
                 System.out.println("Year: " + year);
                 System.out.println("--------------------------");
             }
-            // Process the ResultSet or return it as needed
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

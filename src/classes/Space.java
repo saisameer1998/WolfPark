@@ -19,6 +19,32 @@ public class Space extends WolfPark {
     // this.spaceNumber = spaceNumber;
     // this.spaceType = spaceType;
     // }
+    public static void getSpaceInfo(int space_Number) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        ResultSet result = null;
+
+        try {
+            String sql = "SELECT * WHERE space_number=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, space_Number);
+            result = preparedStatement.executeQuery();
+            while (result.next()) {
+                int spaceNumber = result.getInt("space_number");
+                String spaceType = result.getString("space_type");
+
+                System.out.println("Space Number: " + spaceNumber);
+                System.out.println("Space Type: " + spaceType);
+                System.out.println("--------------------------");
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+    
 
     public static void addSpace(int spaceNumber, String spaceType) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
@@ -79,7 +105,7 @@ public class Space extends WolfPark {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 availableSpace = resultSet.getInt(1);
-                System.out.println(preparedStatement);
+                // System.out.println(preparedStatement);
                 System.out.println(availableSpace);
             }
         } catch (SQLException e) {
