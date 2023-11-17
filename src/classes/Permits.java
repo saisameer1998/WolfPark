@@ -54,12 +54,117 @@ public class Permits extends WolfPark {
         }
     }
 
-    public static void UpdatePermitInfo(String updatedLotName, String permitId) throws SQLException {
+    public static void UpdatePermitLotName(String lotName, String permitId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "UPDATE permits SET lot_name = ? WHERE permit_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, updatedLotName);
+            preparedStatement.setString(1, lotName);
+            preparedStatement.setString(2, permitId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void UpdatePermitZoneID(String zoneID, String permitId) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "UPDATE permits SET zone_id = ? WHERE permit_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, zoneID);
+            preparedStatement.setString(2, permitId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void UpdatePermitSpaceType(String spaceType, String permitId) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "UPDATE permits SET space_type = ? WHERE permit_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, spaceType);
+            preparedStatement.setString(2, permitId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void UpdatePermitStartDate(String startDate, String permitId) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "UPDATE permits SET start_date = ? WHERE permit_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, startDate);
+            preparedStatement.setString(2, permitId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void UpdatePermitExpirationDate(String expirationDate, String permitId) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "UPDATE permits SET expiration_date = ? WHERE permit_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, expirationDate);
+            preparedStatement.setString(2, permitId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void UpdatePermitExpirationTime(String expirationTime, String permitId) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "UPDATE permits SET expiration_time = ? WHERE permit_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, expirationTime);
+            preparedStatement.setString(2, permitId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void UpdatePermitDriverId(String driverId, String permitId) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "UPDATE permits SET driver_id = ? WHERE permit_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, driverId);
+            preparedStatement.setString(2, permitId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void UpdatePermitPermitType(String permitType, String permitId) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "UPDATE permits SET permit_type = ? WHERE permit_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, permitType);
             preparedStatement.setString(2, permitId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
