@@ -15,10 +15,6 @@ import java.sql.SQLException;
 
 public class ParkingLot extends WolfPark {
 
-<<<<<<< HEAD
-=======
-    // Database connection details
->>>>>>> 57c9a282e5912558949d6fb6721ac4930a6e5a9e
     static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
