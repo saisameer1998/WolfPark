@@ -9,8 +9,6 @@ import java.sql.*;
 public class Driver extends WolfPark {
 
 
-    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
-
     // Database connection details
     static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
 
