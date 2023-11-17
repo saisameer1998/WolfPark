@@ -8,24 +8,6 @@ public class Vehicles extends WolfPark {
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
-    // String car_license_number;
-    // String driver_id;
-    // String model;
-    // String color;
-    // String manufacturer;
-    // int year;
-
-    // public Vehicles(String car_license_number, String driver_id, String model,
-    // String color, String manufacturer,
-    // int year) {
-    // this.car_license_number = car_license_number;
-    // this.driver_id = driver_id;
-    // this.model = model;
-    // this.color = color;
-    // this.manufacturer = manufacturer;
-    // this.year = year;
-    // }
-
     public static void GetVehicleInfo(String car_license_number) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
@@ -89,25 +71,6 @@ public class Vehicles extends WolfPark {
         }
     }
 
-    // public static void UpdateVehicle(String car_license_number, String model, String color, String manufacturer,
-    //         int year)
-    //         throws SQLException {
-    //     Connection connection = connectToDatabase(jdbcURL, user, pswd);
-    //     try {
-    //         String sql = "UPDATE vehicles SET model=?, color=?, manufacturer=?, year=? WHERE car_license_number = ?";
-    //         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-    //         preparedStatement.setString(1, model);
-    //         preparedStatement.setString(2, color);
-    //         preparedStatement.setString(3, manufacturer);
-    //         preparedStatement.setInt(4, year);
-    //         preparedStatement.setString(5, car_license_number);
-    //         preparedStatement.executeUpdate();
-    //     } catch (SQLException e) {
-    //         e.printStackTrace();
-    //     } finally {
-    //         close(connection);
-    //     }
-    // }
     public static void updateVehicleDriverId(String car_license_number, String driverId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
 
