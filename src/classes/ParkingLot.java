@@ -34,7 +34,7 @@ public class ParkingLot extends WolfPark {
         }
     }
 
-    public static void updateParkingLotInfo(String lotName, String newAddress) throws SQLException {
+    public static void updateParkingLotAddress(String lotName, String newAddress) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "UPDATE parking_lots SET address= ? WHERE lot_name = ?";

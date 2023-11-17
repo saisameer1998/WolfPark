@@ -21,31 +21,53 @@ public class Zone extends WolfPark {
     public static void addZone(String zoneId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
+            // Start the transaction
+            connection.setAutoCommit(false);
+            
             String sql = "INSERT INTO zone_assignments VALUES (?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, zoneId);
-            preparedStatement.executeUpdate();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, zoneId);
+                preparedStatement.executeUpdate();
+            }
+            // Commit the transaction if everything is successful
+            connection.commit();
         } catch (SQLException e) {
+            // Rollback the transaction in case of an exception
+            if (connection != null) {
+                connection.rollback();
+            }
             e.printStackTrace();
         } finally {
-            close(connection);
+            try {
+                // Set auto-commit back to true
+                if (connection != null) {
+                    connection.setAutoCommit(true);
+                }
+            } finally {
+                // Close the connection
+                if (connection != null) {
+                    close(connection);
+                }
+            }
         }
+
     }
 
-    public static void updateZoneInfo(String zoneId, String newZoneId) throws SQLException {
-        Connection connection = connectToDatabase(jdbcURL, user, pswd);
-        try {
-            String sql = "UPDATE zones SET zone_id = ? WHERE zone_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, newZoneId);
-            preparedStatement.setString(2, zoneId);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(connection);
-        }
-    }
+    // DELETE
+    // public static void updateZoneInfo(String zoneId, String newZoneId) throws SQLException {
+    //     Connection connection = connectToDatabase(jdbcURL, user, pswd);
+    //     try {
+    //         String sql = "UPDATE zones SET zone_id = ? WHERE zone_id = ?";
+    //         PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    //         preparedStatement.setString(1, newZoneId);
+    //         preparedStatement.setString(2, zoneId);
+    //         preparedStatement.executeUpdate();
+    //     } catch (SQLException e) {
+    //         e.printStackTrace();
+    //     } finally {
+    //         close(connection);
+    //     }
+    // }
 
     public static void deleteZone(String zoneId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
