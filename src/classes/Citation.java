@@ -178,11 +178,6 @@ public class Citation extends WolfPark {
 		updateCitationPymntStatus(citationNumber, "PAID");
 	}
 
-	public static void appealCitation(String citationNumber) throws SQLException {
-
-		updateCitationPymntStatus(citationNumber, "APPEAL");
-	}
-
 	public static ResultSet getCitationReport(String startDate, String endDate) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
@@ -194,6 +189,14 @@ public class Citation extends WolfPark {
 			preparedStatement.setString(1, startDate);
 			preparedStatement.setString(2, endDate);
 			result = preparedStatement.executeQuery();
+			while (result.next()) {
+				String lotName = result.getString("lot_name");
+				int numCitations = result.getInt(2);
+
+				System.out.println("Lot Name: " + lotName);
+				System.out.println("Number of Citations: " + numCitations);
+				System.out.println("--------------------------");
+        }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -212,6 +215,12 @@ public class Citation extends WolfPark {
 					"WHERE payment_status <> 'PAID'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			result = preparedStatement.executeQuery();
+			while (result.next()) {
+				int numViolatedCars = result.getInt(1);
+
+				System.out.println("Number of Violated Cars: " + numViolatedCars);
+				System.out.println("--------------------------");
+        }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

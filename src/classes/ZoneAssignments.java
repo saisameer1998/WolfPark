@@ -49,9 +49,9 @@ public class ZoneAssignments extends WolfPark {
             String sql = "SELECT * FROM zone_assignments";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (result.next()) {
-                String zoneId = result.getString("zone_id");
-                String lotName = result.getString("lot_name");
+            while (resultSet.next()) {
+                String zoneId = resultSet.getString("zone_id");
+                String lotName = resultSet.getString("lot_name");
 
                 System.out.println("Zone ID: " + zoneId);
                 System.out.println("Lot Name: " + lotName);
@@ -71,11 +71,11 @@ public class ZoneAssignments extends WolfPark {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, zoneId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (result.next()) {
-                String zoneId = result.getString("zone_id");
-                String lotName = result.getString("lot_name");
+            while (resultSet.next()) {
+                String zoneID = resultSet.getString("zone_id");
+                String lotName = resultSet.getString("lot_name");
 
-                System.out.println("Zone ID: " + zoneId);
+                System.out.println("Zone ID: " + zoneID);
                 System.out.println("Lot Name: " + lotName);
                 System.out.println("--------------------------");
             }
@@ -93,12 +93,12 @@ public class ZoneAssignments extends WolfPark {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, lotName);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (result.next()) {
-                String zoneId = result.getString("zone_id");
-                String lotName = result.getString("lot_name");
+            while (resultSet.next()) {
+                String zoneId = resultSet.getString("zone_id");
+                String lotNames = resultSet.getString("lot_name");
 
                 System.out.println("Zone ID: " + zoneId);
-                System.out.println("Lot Name: " + lotName);
+                System.out.println("Lot Name: " + lotNames);
                 System.out.println("--------------------------");
             }
         } catch (SQLException e) {
