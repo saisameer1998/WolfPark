@@ -33,8 +33,10 @@ class WolfPark {
                     break;
                 case 6:
                     handleSpaceOperations();
+                    break;
                 case 7:
                     handleCitationOperations();
+                    break;
                 case 0:
                     System.out.println("Exiting...");
                     break;
