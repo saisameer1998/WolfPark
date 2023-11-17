@@ -327,7 +327,7 @@ class WolfPark {
                     System.out.print("Permit type: ");
                     permitType = scanner.nextLine();
                     // Separate Updates
-                    Permits.UpdatePermitInfo(lotName, permitId);
+                    // Permits.UpdatePermitInfo(lotName, permitId);
                     break;
                 case 3:
                     System.out.println("Deleting a permit...");
