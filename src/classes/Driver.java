@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class Driver extends WolfPark {
 
-    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
@@ -12,7 +12,7 @@ public class Driver extends WolfPark {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
         try {
-            String sql = "SELECT * WHERE driver_id= ? ";
+            String sql = "SELECT * FROM drivers WHERE driver_id= ? ";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, driver_id);
             result = preparedStatement.executeQuery();

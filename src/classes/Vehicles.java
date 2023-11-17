@@ -44,7 +44,12 @@ public class Vehicles extends WolfPark {
             String sql = "INSERT INTO vehicles VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, car_license_number);
-            preparedStatement.setString(2, driver_id);
+            if(driver_id.isBlank()) {
+            	preparedStatement.setNull(2, java.sql.Types.VARCHAR);
+            }
+            else {
+            	preparedStatement.setString(2, driver_id);
+            }
             preparedStatement.setString(3, model);
             preparedStatement.setString(4, color);
             preparedStatement.setString(5, manufacturer);

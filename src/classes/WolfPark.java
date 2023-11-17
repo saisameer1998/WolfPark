@@ -33,8 +33,10 @@ class WolfPark {
                     break;
                 case 6:
                     handleSpaceOperations();
+                    break;
                 case 7:
                     handleCitationOperations();
+                    break;
                 case 0:
                     System.out.println("Exiting...");
                     break;
@@ -87,6 +89,7 @@ class WolfPark {
                         case 1:
                             System.out.println("Updating driver name...");
                             System.out.print("Enter driver ID to update: ");
+                            scanner.next();
                             driverId = scanner.nextLine();
                             System.out.print("Enter new driver name: ");
                             driverName = scanner.nextLine();
@@ -95,6 +98,7 @@ class WolfPark {
                         case 2:
                             System.out.println("Updating driver status...");
                             System.out.print("Enter driver ID to update: ");
+                            scanner.next();
                             driverId = scanner.nextLine();
                             System.out.print("Enter new driver status: ");
                             driverStatus = scanner.nextLine();
@@ -103,6 +107,7 @@ class WolfPark {
                         case 3:
                             System.out.println("Updating driver disability...");
                             System.out.print("Enter driver ID to update: ");
+                            scanner.next();
                             driverId = scanner.nextLine();
                             System.out.print("Enter new driver disability: ");
                             driverDisability = scanner.nextLine();
@@ -143,10 +148,16 @@ class WolfPark {
                     citationNumber = scanner.nextLine();
                     Citation.appealCitationFee(citationNumber);
                     break;
+                case 7:
+                    System.out.println("Getting driver...");
+                    System.out.print("Enter driver ID to get: ");
+                    driverId = scanner.nextLine();
+                    Driver.getDriverInfo(driverId);
+                    break;
                 case 0:
                     System.out.println("Exiting driver operations...");
                     Menu.displayMainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
                     break;
@@ -213,6 +224,7 @@ class WolfPark {
                         case 1:
                             System.out.println("Updating driver ID...");
                             System.out.print("Enter car license number of the vehicle to update: ");
+                            scanner.next();
                             carLicenseNumber = scanner.nextLine();
                             System.out.print("Enter updated driver ID: ");
                             driverId = scanner.nextLine();
@@ -221,6 +233,7 @@ class WolfPark {
                         case 2:
                             System.out.println("2. Updating vehicle model...");
                             System.out.print("Enter car license number of the vehicle to update: ");
+                            scanner.next();
                             carLicenseNumber = scanner.nextLine();
                             System.out.print("Enter updated vehicle model: ");
                             model = scanner.nextLine();
@@ -229,6 +242,7 @@ class WolfPark {
                         case 3:
                             System.out.println("3. Updating vehicle color...");
                             System.out.print("Enter car license number of the vehicle to update: ");
+                            scanner.next();
                             carLicenseNumber = scanner.nextLine();
                             System.out.print("Enter updated vehicle color: ");
                             color = scanner.nextLine();
@@ -237,6 +251,7 @@ class WolfPark {
                         case 4:
                             System.out.println("4. Updating vehicle manufacturer...");
                             System.out.print("Enter car license number of the vehicle to update: ");
+                            scanner.next();
                             carLicenseNumber = scanner.nextLine();
                             System.out.print("Enter updated vehicle manufacturer: ");
                             manufacturer = scanner.nextLine();
@@ -245,6 +260,7 @@ class WolfPark {
                         case 5:
                             System.out.println("6. Updating vehicle year...");
                             System.out.print("Enter car license number of the vehicle to update: ");
+                            scanner.next();
                             carLicenseNumber = scanner.nextLine();
                             System.out.print("Enter updated vehicle year: ");
                             year = scanner.nextInt();
@@ -262,7 +278,7 @@ class WolfPark {
                 case 0:
                     System.out.println("Exiting vehicle operations...");
                     Menu.displayMainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
                     break;
@@ -326,6 +342,7 @@ class WolfPark {
                         case 1:
                             System.out.println("Updating lot name...");
                             System.out.print("Enter permit ID of the permit to update: ");
+                            scanner.next();
                             permitId = scanner.nextLine();
                             System.out.print("Lot name: ");
                             lotName = scanner.nextLine();
@@ -334,6 +351,7 @@ class WolfPark {
                         case 2:
                             System.out.println("Updating zone ID...");
                             System.out.print("Enter permit ID of the permit to update: ");
+                            scanner.next();
                             permitId = scanner.nextLine();
                             System.out.print("Zone ID: ");
                             zoneId = scanner.nextLine();
@@ -342,6 +360,7 @@ class WolfPark {
                         case 3:
                             System.out.println("Updating space type...");
                             System.out.print("Enter permit ID of the permit to update: ");
+                            scanner.next();
                             permitId = scanner.nextLine();
                             System.out.print("Space type: ");
                             spaceType = scanner.nextLine();
@@ -350,6 +369,7 @@ class WolfPark {
                         case 4:
                             System.out.println("Updating start date...");
                             System.out.print("Enter permit ID of the permit to update: ");
+                            scanner.next();
                             permitId = scanner.nextLine();
                             System.out.print("Start date (YYYY-MM-DD): ");
                             startDate = scanner.nextLine();
@@ -358,6 +378,7 @@ class WolfPark {
                         case 5:
                             System.out.println("Updating expiration date...");
                             System.out.print("Enter permit ID of the permit to update: ");
+                            scanner.next();
                             permitId = scanner.nextLine();
                             System.out.print("Expiration date (YYYY-MM-DD): ");
                             expirationDate = scanner.nextLine();
@@ -366,6 +387,7 @@ class WolfPark {
                         case 6:
                             System.out.println("Updating expiration time...");
                             System.out.print("Enter permit ID of the permit to update: ");
+                            scanner.next();
                             permitId = scanner.nextLine();
                             System.out.print("Expiration time: ");
                             expirationTime = scanner.nextLine();
@@ -374,6 +396,7 @@ class WolfPark {
                         case 7:
                             System.out.println("Updating driver ID...");
                             System.out.print("Enter permit ID of the permit to update: ");
+                            scanner.next();
                             permitId = scanner.nextLine();
                             System.out.print("Driver ID: ");
                             driverId = scanner.nextLine();
@@ -382,6 +405,7 @@ class WolfPark {
                         case 8:
                             System.out.println("Updating permit type...");
                             System.out.print("Enter permit ID of the permit to update: ");
+                            scanner.next();
                             permitId = scanner.nextLine();
                             System.out.print("Permit type: ");
                             permitType = scanner.nextLine();
@@ -417,7 +441,7 @@ class WolfPark {
                 case 0:
                     System.out.println("Exiting permit operations...");
                     Menu.displayMainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
                     break;
@@ -466,7 +490,7 @@ class WolfPark {
                 case 0:
                     System.out.println("Exiting parking lot operations...");
                     Menu.displayMainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
                     break;
@@ -510,10 +534,13 @@ class WolfPark {
                     zoneId = scanner.nextLine();
                     Zone.getZoneInfo(zoneId);
                     break;
+                case 4:
+                    ZoneAssignments.getZoneAssignments();
+                	break;
                 case 0:
                     System.out.println("Exiting zone operations...");
                     Menu.displayMainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
                     break;
@@ -571,10 +598,18 @@ class WolfPark {
                     spaceNumber = scanner.nextInt();
                     Space.getAvailableSpace(spaceNumber, lotName);
                     break;
+                case 5:
+                	System.out.println("Getting space type availability...");
+                	System.out.print("Enter space type: ");
+                    spaceType = scanner.nextLine();
+                    System.out.print("Enter lot name: ");
+                    lotName = scanner.nextLine();
+                	SpaceAssignments.getSpaceTypeAvailabilityInLot(spaceType, lotName);
+                	break;
                 case 0:
                     System.out.println("Exiting space operations...");
                     Menu.displayMainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
                     break;
@@ -632,6 +667,7 @@ class WolfPark {
                         case 1:
                             System.out.println("Updating citation car license number...");
                             System.out.print("Enter citation number: ");
+                            scanner.next();
                             citationNumber = scanner.nextLine();
                             System.out.print("Enter new car license number: ");
                             carLicenseNumber = scanner.nextLine();
@@ -640,6 +676,7 @@ class WolfPark {
                         case 2:
                             System.out.println("Updating citation lot name...");
                             System.out.print("Enter citation number: ");
+                            scanner.next();
                             citationNumber = scanner.nextLine();
                             System.out.print("Enter new lot name: ");
                             lotName = scanner.nextLine();
@@ -648,6 +685,7 @@ class WolfPark {
                         case 3:
                             System.out.println("Updating citation category...");
                             System.out.print("Enter citation number: ");
+                            scanner.next();
                             citationNumber = scanner.nextLine();
                             System.out.print("Enter new category: ");
                             category = scanner.nextLine();
@@ -656,6 +694,7 @@ class WolfPark {
                         case 4:
                             System.out.println("Updating citation fee...");
                             System.out.print("Enter citation number: ");
+                            scanner.next();
                             citationNumber = scanner.nextLine();
                             System.out.print("Enter new fee: ");
                             fee = scanner.nextFloat();
@@ -665,6 +704,7 @@ class WolfPark {
                         case 5:
                             System.out.println("Updating citation payment status...");
                             System.out.print("Enter citation number: ");
+                            scanner.next();
                             citationNumber = scanner.nextLine();
                             System.out.print("Enter new payment status: ");
                             paymentStatus = scanner.nextLine();
@@ -673,6 +713,7 @@ class WolfPark {
                         case 6:
                             System.out.println("Updating citation date...");
                             System.out.print("Enter citation number: ");
+                            scanner.next();
                             citationNumber = scanner.nextLine();
                             System.out.print("Enter new citation date (yyyy-MM-dd): ");
                             citationDate = scanner.nextLine();
@@ -681,6 +722,7 @@ class WolfPark {
                         case 7:
                             System.out.println("Updating citation time...");
                             System.out.print("Enter citation number: ");
+                            scanner.next();
                             citationNumber = scanner.nextLine();
                             System.out.print("Enter new citation time (hh:mm:ss): ");
                             citationTime = scanner.nextLine();
@@ -720,7 +762,7 @@ class WolfPark {
                 case 0:
                     System.out.println("Exiting citation operations...");
                     Menu.displayMainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
                     break;

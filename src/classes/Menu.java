@@ -29,6 +29,7 @@ public class Menu {
         System.out.println("4. Get Employee Permit Count");
         System.out.println("5. Pay Citation Fee");
         System.out.println("6. Appeal Citation");
+        System.out.println("7. Get Driver Information");
         System.out.println("0. Go back to main menu");
     }
 
@@ -102,6 +103,7 @@ public class Menu {
         System.out.println("1. Enter Zone Information");
         System.out.println("2. Delete Zone Information");
         System.out.println("3. Get Zone Information");
+        System.out.println("4. Get Assigned Zones");
         System.out.println("0. Go back to Main Menu");
     }
 
@@ -112,6 +114,7 @@ public class Menu {
         System.out.println("2. Update Space Type");
         System.out.println("3. Delete Space Information");
         System.out.println("4. Get Available Space");
+        System.out.println("5. Get Space Type Availability in Lot");
         System.out.println("0. Go back to Main Menu");
     }
 
@@ -121,8 +124,8 @@ public class Menu {
         System.out.println("1. Generate Citation");
         System.out.println("2. Update Citation");
         System.out.println("3. Delete Citation");
-        System.out.println("5. Get Citation Report");
-        System.out.println("6. Get Violated Cars Information");
+        System.out.println("4. Get Citation Report");
+        System.out.println("5. Get Violated Cars Information");
         System.out.println("0. Go back to main menu");
     }
 

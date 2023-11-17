@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class ParkingLot extends WolfPark {
 
-    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 

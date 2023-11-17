@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Citation extends WolfPark {
 
-	static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+	static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
 	static String user = "sguttha";
 	static String pswd = "Maria@MegaMind1";
 
@@ -111,7 +111,9 @@ public class Citation extends WolfPark {
 			preparedStatement.setString(1, paymentStatus);
 			preparedStatement.setString(2, citationNumber);
 			preparedStatement.executeUpdate();
+			System.out.println("Paid Successfully");
 		} catch (SQLException e) {
+			System.out.println("Payment Unsuccessful");
 			e.printStackTrace();
 		} finally {
 			close(connection);
@@ -166,7 +168,6 @@ public class Citation extends WolfPark {
 	}
 
 	public static void payCitationFee(String citationNumber) throws SQLException {
-
 		updateCitationPymntStatus(citationNumber, "PAID");
 	}
 
@@ -181,11 +182,12 @@ public class Citation extends WolfPark {
 		ResultSet result = null;
 		try {
 			String sql = "SELECT lot_name, count(*) as 'Num Citations' FROM citations" +
-					"WHERE citation_date BETWEEN ? AND ? GROUP BY lot_name";
+					" WHERE citation_date BETWEEN ? AND ? GROUP BY lot_name";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, startDate);
 			preparedStatement.setString(2, endDate);
 			result = preparedStatement.executeQuery();
+			//System.out.println(preparedStatement);
 			while (result.next()) {
 				String lotName = result.getString("lot_name");
 				int numCitations = result.getInt("Num Citations");
@@ -209,7 +211,7 @@ public class Citation extends WolfPark {
 		ResultSet result = null;
 		try {
 			String sql = "SELECT count(*) as 'Num Violated Cars' FROM citations" +
-					"WHERE payment_status <> 'PAID'";
+					" WHERE payment_status <> 'PAID'";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			result = preparedStatement.executeQuery();
 			while (result.next()) {
