@@ -3,6 +3,7 @@ package classes;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ParkingLot extends WolfPark {
@@ -76,7 +77,7 @@ public class ParkingLot extends WolfPark {
         } finally {
             close(connection);
         }
-    }  
+    }
 
     private static Connection connectToDatabase(String jdbcURL, String user, String pswd)
             throws SQLException {

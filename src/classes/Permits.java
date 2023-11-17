@@ -4,11 +4,12 @@ import java.sql.*;
 
 public class Permits extends WolfPark {
 
-	static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
+    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
-    public static void CreatePermitInfo(String permit_id, String lot_name, String zone_id, String space_type, String start_date,
+    public static void CreatePermitInfo(String permit_id, String lot_name, String zone_id, String space_type,
+            String start_date,
             String expiration_date, String expiration_time, String driver_id, String permit_type) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
@@ -166,7 +167,7 @@ public class Permits extends WolfPark {
     }
 
     public static void GetPermitInfo(String permitId) throws SQLException {
-    	Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
         try {
             String sql = "SELECT * FROM permits WHERE permit_id = ?";
@@ -201,7 +202,7 @@ public class Permits extends WolfPark {
         }
     }
 
-    public static boolean IsValidPermit(String permitId) throws SQLException {
+    public static void IsValidPermit(String permitId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
         try {
@@ -209,13 +210,16 @@ public class Permits extends WolfPark {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, permitId);
             result = preparedStatement.executeQuery();
-            return result.next();
+            if (result.next() == true) {
+                System.out.println("True");
+            } else {
+                System.out.println("False");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             close(connection);
         }
-        return false;
     }
 
     private static Connection connectToDatabase(String jdbcURL, String user, String pswd)

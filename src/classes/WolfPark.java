@@ -56,6 +56,7 @@ class WolfPark {
         String driverStatus;
         String driverDisability;
         String lotName;
+        String citationNumber;
 
         do {
             Menu.displayDriverMenu();
@@ -129,6 +130,18 @@ class WolfPark {
                     System.out.println("Enter Driver Status");
                     driverStatus = scanner.nextLine();
                     Driver.getEmpPermCount(lotName, driverStatus);
+                    break;
+                case 5:
+                    System.out.println("Paying citation fee...");
+                    System.out.print("Enter citation id: ");
+                    citationNumber = scanner.nextLine();
+                    Citation.payCitationFee(citationNumber);
+                    break;
+                case 6:
+                    System.out.println("Appealing citation...");
+                    System.out.print("Enter citation id: ");
+                    citationNumber = scanner.nextLine();
+                    Citation.appealCitationFee(citationNumber);
                     break;
                 case 0:
                     System.out.println("Exiting driver operations...");
@@ -399,8 +412,7 @@ class WolfPark {
                     System.out.println("Checking if the permit is valid...");
                     System.out.print("Enter permit ID: ");
                     permitId = scanner.nextLine();
-                    boolean isValid = Permits.IsValidPermit(permitId);
-                    // FIX METHOD CALL
+                    Permits.IsValidPermit(permitId);
                     break;
                 case 0:
                     System.out.println("Exiting permit operations...");
