@@ -43,6 +43,27 @@ public class ZoneAssignments extends WolfPark {
         }
     }
 
+    public static void getZoneAssignments() throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "SELECT * FROM zone_assignments";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (result.next()) {
+                String zoneId = result.getString("zone_id");
+                String lotName = result.getString("lot_name");
+
+                System.out.println("Zone ID: " + zoneId);
+                System.out.println("Lot Name: " + lotName);
+                System.out.println("--------------------------");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
     public static void getZoneAssignedLots(String zoneId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
