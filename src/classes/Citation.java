@@ -170,6 +170,11 @@ public class Citation extends WolfPark {
 		updateCitationPymntStatus(citationNumber, "PAID");
 	}
 
+	public static void appealCitationFee(String citationNumber) throws SQLException {
+
+		updateCitationPymntStatus(citationNumber, "APPEAL");
+	}
+
 	public static ResultSet getCitationReport(String startDate, String endDate) throws SQLException {
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
