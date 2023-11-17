@@ -8,12 +8,12 @@ import java.sql.*;
 
 public class Driver extends WolfPark {
 
-<<<<<<< HEAD
+
     static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
-=======
+
     // Database connection details
     static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
->>>>>>> 57c9a282e5912558949d6fb6721ac4930a6e5a9e
+
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
