@@ -68,6 +68,22 @@ public class Driver extends WolfPark {
         }
     }
 
+    public static void getEmpPermCount(String lot_name, String status) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "SELECT COUNT(DISTINCT ( d.driver_id ) ) FROM permits p, drivers d WHERE p.driver_id = d.driver_id AND p.lot_name= ? AND d.status = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, lot_name);
+            preparedStatement.setString(2, status);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+        // Implement 
+    }
+
     private static Connection connectToDatabase(String jdbcURL, String user, String pswd)
             throws SQLException {
         Connection connection = null;
@@ -89,4 +105,5 @@ public class Driver extends WolfPark {
         }
 
     }
+
 }

@@ -56,6 +56,7 @@ class WolfPark {
         String driverName;
         String driverStatus;
         String driverDisability;
+        String lotName;
 
         do {
             Menu.displayDriverMenu();
@@ -92,7 +93,13 @@ class WolfPark {
                     Driver.deleteDriver(driverId);
                     break;
                 case 4:
-                    // Driver.getEmpPermCount();
+                    // Implement
+                    System.out.println("Getting employee permit count");
+                    System.out.println("Enter Lot name");
+                    lotName = scanner.nextLine();
+                    System.out.println("Enter Driver Status");
+                    driverStatus = scanner.nextLine();
+                    Driver.getEmpPermCount(lotName, driverStatus);
                     break;
                 case 0:
                     System.out.println("Exiting driver operations...");
@@ -448,11 +455,20 @@ class WolfPark {
         scanner.close();
     }
 
-    private static void handleCitationOperations() {
+    private static void handleCitationOperations() throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        // Citation citation = new Citation();
+        String citationNumber;
+        String carLicenseNumber;
+        String lotName;
+        String category;
+        float fee;
+        String paymentStatus;
+        String startDate;
+        String endDate;
+        String citationDate;
+        String citationTime;
 
         do {
             Menu.displayCitationMenu();
@@ -462,22 +478,122 @@ class WolfPark {
 
             switch (choice) {
                 case 1:
-                    // updateCitationPaymentStatus
+                    System.out.println("Generating citation...");
+                    System.out.print("Enter citation number: ");
+                    citationNumber = scanner.nextLine();
+                    System.out.print("Enter car license number: ");
+                    carLicenseNumber = scanner.nextLine();
+                    System.out.print("Enter lot name: ");
+                    lotName = scanner.nextLine();
+                    System.out.print("Enter category: ");
+                    category = scanner.nextLine();
+                    System.out.print("Enter fee: ");
+                    fee = scanner.nextFloat();
+                    scanner.nextLine();
+                    System.out.print("Enter payment status: ");
+                    paymentStatus = scanner.nextLine();
+                    Citation.generateCitation(citationNumber, carLicenseNumber, lotName, category, fee, paymentStatus);
                     break;
                 case 2:
-                    // generateCitation
+                    System.out.println("What do you want to update: ");
+                    Menu.displayCitationSubMenu();
+                    System.out.print("Enter your choice: ");
+                    int choice2 = scanner.nextInt();
+
+                    switch (choice2) {
+                        case 1:
+                            System.out.println("Updating citation car license number...");
+                            System.out.print("Enter citation number: ");
+                            citationNumber = scanner.nextLine();
+                            System.out.print("Enter new car license number: ");
+                            carLicenseNumber = scanner.nextLine();
+                            Citation.updateCitationCarLsncNum(citationNumber, carLicenseNumber);
+                            break;
+                        case 2:
+                            System.out.println("Updating citation lot name...");
+                            System.out.print("Enter citation number: ");
+                            citationNumber = scanner.nextLine();
+                            System.out.print("Enter new lot name: ");
+                            lotName = scanner.nextLine();
+                            Citation.updateCitationLotName(citationNumber, lotName);
+                            break;
+                        case 3:
+                            System.out.println("Updating citation category...");
+                            System.out.print("Enter citation number: ");
+                            citationNumber = scanner.nextLine();
+                            System.out.print("Enter new category: ");
+                            category = scanner.nextLine();
+                            Citation.updateCitationCategory(citationNumber, category);
+                            break;
+                        case 4:
+                            System.out.println("Updating citation fee...");
+                            System.out.print("Enter citation number: ");
+                            citationNumber = scanner.nextLine();
+                            System.out.print("Enter new fee: ");
+                            fee = scanner.nextFloat();
+                            scanner.nextLine();
+                            Citation.updateCitationFee(citationNumber, fee);
+                            break;
+                        case 5:
+                            System.out.println("Updating citation payment status...");
+                            System.out.print("Enter citation number: ");
+                            citationNumber = scanner.nextLine();
+                            System.out.print("Enter new payment status: ");
+                            paymentStatus = scanner.nextLine();
+                            Citation.updateCitationPymntStatus(citationNumber, paymentStatus);
+                            break;
+                        case 6:
+                            System.out.println("Updating citation date...");
+                            System.out.print("Enter citation number: ");
+                            citationNumber = scanner.nextLine();
+                            System.out.print("Enter new citation date (yyyy-MM-dd): ");
+                            citationDate = scanner.nextLine();
+                            Citation.updateCitationDate(citationNumber, citationDate);
+                            break;
+                        case 7:
+                            System.out.println("Updating citation time...");
+                            System.out.print("Enter citation number: ");
+                            citationNumber = scanner.nextLine();
+                            System.out.print("Enter new citation time (hh:mm:ss): ");
+                            citationTime = scanner.nextLine();
+                            Citation.updateCitationTime(citationNumber, citationTime);
+                            break;
+                        case 0:
+                            System.out.println("Exiting citation update operations...");
+                            Menu.displayCitationMenu();
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please enter a valid option.");
+                            break;
+                    }
                     break;
                 case 3:
-                    // updateCitation
+                    System.out.println("Deleting citation...");
+                    System.out.print("Enter citation number to delete: ");
+                    citationNumber = scanner.nextLine();
+                    Citation.deleteCitation(citationNumber);
                     break;
                 case 4:
-                    // payCitationFee
+                    System.out.println("Paying citation fee...");
+                    System.out.print("Enter citation number to pay fee: ");
+                    citationNumber = scanner.nextLine();
+                    Citation.payCitationFee(citationNumber);
                     break;
                 case 5:
-                    // getCitationReport
+                    System.out.println("Getting citation report: ");
+                    System.out.print("Enter start date (yyyy-MM-dd): ");
+                    startDate = scanner.nextLine();
+                    System.out.print("Enter end date (yyyy-MM-dd): ");
+                    endDate = scanner.nextLine();
+                    Citation.getCitationReport(startDate, endDate);
                     break;
                 case 6:
-                    // getViolatedCarsInfo
+                    System.out.println("Getting violated cars information...");
+                    System.out.print("Enter start date (yyyy-MM-dd): ");
+                    startDate = scanner.nextLine();
+                    System.out.print("Enter end date (yyyy-MM-dd): ");
+                    endDate = scanner.nextLine();
+                    Citation.getViolatedCarsInfo(startDate, endDate);
                     break;
                 case 0:
                     System.out.println("Exiting citation operations...");
