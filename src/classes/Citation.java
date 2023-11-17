@@ -13,10 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Citation extends WolfPark {
 
-<<<<<<< HEAD
-=======
 	// Database connection details
->>>>>>> 57c9a282e5912558949d6fb6721ac4930a6e5a9e
 	static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
 	static String user = "sguttha";
 	static String pswd = "Maria@MegaMind1";
@@ -244,8 +241,6 @@ public class Citation extends WolfPark {
 	}
 
 	public static void payCitationFee(String citationNumber) throws SQLException {
-<<<<<<< HEAD
-=======
 		/**
  		* Updates the payment status of a citation to "PAID" in the database.
  		*
@@ -254,8 +249,6 @@ public class Citation extends WolfPark {
 		* @param citationNumber    The unique identifier for the citation to be marked as paid.
 		* @throws SQLException     If a database access error occurs.
  		*/
-
->>>>>>> 57c9a282e5912558949d6fb6721ac4930a6e5a9e
 		updateCitationPymntStatus(citationNumber, "PAID");
 	}
 
