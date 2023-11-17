@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class Permits extends WolfPark {
 
-    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+	static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
@@ -83,20 +83,40 @@ public class Permits extends WolfPark {
         }
     }
 
-    public static ResultSet GetPermitInfo(String permitId) throws SQLException {
-        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+    public static void GetPermitInfo(String permitId) throws SQLException {
+    	Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
         try {
             String sql = "SELECT * FROM permits WHERE permit_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, permitId);
             result = preparedStatement.executeQuery();
+            while (result.next()) {
+                String lotName = result.getString("lot_name");
+                String zoneId = result.getString("zone_id");
+                String spaceType = result.getString("space_type");
+                String startDate = result.getString("start_date");
+                String expirationDate = result.getString("expiration_date");
+                String expirationTime = result.getString("expiration_time");
+                String driverId = result.getString("driver_id");
+                String permitType = result.getString("permit_type");
+
+                System.out.println("Permit ID: " + permitId);
+                System.out.println("Lot Name: " + lotName);
+                System.out.println("Zone ID: " + zoneId);
+                System.out.println("Space Type: " + spaceType);
+                System.out.println("Start Date: " + startDate);
+                System.out.println("Expiration Date: " + expirationDate);
+                System.out.println("Expiration Time: " + expirationTime);
+                System.out.println("Driver ID: " + driverId);
+                System.out.println("Permit Type: " + permitType);
+                System.out.println("--------------------------");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             close(connection);
         }
-        return result;
     }
 
     //Fix Query
@@ -133,6 +153,7 @@ public class Permits extends WolfPark {
         if (conn != null) {
             try {
                 conn.close();
+                System.out.println("Connnection closed");
             } catch (Throwable whatever) {
             }
         }

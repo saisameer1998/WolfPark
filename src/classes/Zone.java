@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class Zone extends WolfPark {
 
-    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
@@ -71,6 +71,7 @@ public class Zone extends WolfPark {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 zoneInfo = resultSet.getString("zone_id");
+                System.out.println(zoneInfo);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -97,6 +98,7 @@ public class Zone extends WolfPark {
         if (conn != null) {
             try {
                 conn.close();
+                System.out.println("Connnection closed");
             } catch (Throwable whatever) {
             }
         }
