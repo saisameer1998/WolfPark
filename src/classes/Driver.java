@@ -20,6 +20,33 @@ public class Driver extends WolfPark {
     // this.status = status;
     // this.disability = disability;
     // }
+    public static void getDriverInfo(String driver_id) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        ResultSet result = null;
+        try {
+            String sql = "SELECT * WHERE driver_id= ? ";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, driver_id);
+            result = preparedStatement.executeQuery();
+            while (result.next()) {
+                String driverId = result.getString("driver_id");
+                String name = result.getString("name");
+                String status = result.getString("status");
+                String disability = result.getString("disability");
+
+                System.out.println("Driver ID: " + driverId);
+                System.out.println("Name: " + name);
+                System.out.println("Status: " + status);
+                System.out.println("Disability: " + disability);
+                System.out.println("--------------------------");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
 
     public static void addDriver(String driver_id, String name, String status, String disability)
             throws SQLException {
@@ -123,12 +150,19 @@ public class Driver extends WolfPark {
 
     public static void getEmpPermCount(String lot_name, String status) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        ResultSet result = null;
+
         try {
             String sql = "SELECT COUNT(DISTINCT ( d.driver_id ) ) FROM permits p, drivers d WHERE p.driver_id = d.driver_id AND p.lot_name= ? AND d.status = ?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, lot_name);
             preparedStatement.setString(2, status);
-            preparedStatement.executeUpdate();
+            result = preparedStatement.executeQuery();
+            while (result.next()) {
+            int count = result.getInt(1); // Assuming the count is in the first column
+            System.out.println("Employee Permit Count: " + count);
+        }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

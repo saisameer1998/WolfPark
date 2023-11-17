@@ -12,12 +12,13 @@ public class SpaceAssignments extends WolfPark {
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
-    public static void assignSpace(int spaceNumber, String zoneId, String lotName, String availabilityStatus) throws SQLException {
+    public static void assignSpace(int spaceNumber, String zoneId, String lotName, String availabilityStatus)
+            throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "INSERT INTO space_assignments(space_number, zone_id, lot_name, availability_status) VALUES (?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setString(1, spaceNumber);
+                preparedStatement.setInt(1, spaceNumber);
                 preparedStatement.setString(2, zoneId);
                 preparedStatement.setString(1, lotName);
                 preparedStatement.setString(2, availabilityStatus);
@@ -35,7 +36,7 @@ public class SpaceAssignments extends WolfPark {
         try {
             String sql = "DELETE FROM space_assignments WHERE space_number = ? AND zone_id = ? AND lot_name = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, spaceNumber);
+            preparedStatement.setInt(1, spaceNumber);
             preparedStatement.setString(2, zoneId);
             preparedStatement.setString(3, lotName);
             preparedStatement.executeUpdate();
@@ -49,14 +50,15 @@ public class SpaceAssignments extends WolfPark {
     public static void getSpaceTypeAvailabilityInLot(String spaceType, String lotName) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
-            String sql = "SELECT count(*) as 'space_availability_number' FROM space_assignments WHERE lot_name = ? AND" +
-                          " availability_status = 'YES' AND space_number in (SELECT space_number FROM spaces WHERE space_type = ?);
+            String sql = "SELECT count(*) as 'space_availability_number' FROM space_assignments WHERE lot_name = ? AND"
+                    +
+                    " availability_status = 'YES' AND space_number in (SELECT space_number FROM spaces WHERE space_type = ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, lotName);
             preparedStatement.setString(2, spaceType);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (result.next()) {
-                String spaceAvailabilityNumber = result.getString("space_availability_number");
+            while (resultSet.next()) {
+                String spaceAvailabilityNumber = resultSet.getString("space_availability_number");
 
                 System.out.println("Number of Spaces Available: " + spaceAvailabilityNumber);
                 System.out.println("--------------------------");
@@ -74,14 +76,14 @@ public class SpaceAssignments extends WolfPark {
             String sql = "SELECT * FROM space_assignments";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (result.next()) {
-                String spaceNumber = result.getString("space_number");
-                String zoneID = result.getString("zone_id");
-                String lotName = result.getString("lot_name");
-                String availabilityStatus = result.getString("availability_status");
+            while (resultSet.next()) {
+                String spaceNumber = resultSet.getString("space_number");
+                String zoneID = resultSet.getString("zone_id");
+                String lotName = resultSet.getString("lot_name");
+                String availabilityStatus = resultSet.getString("availability_status");
 
                 System.out.println("Space Number " + spaceNumber);
-                System.out.println("Zone ID: " + zoneId);
+                System.out.println("Zone ID: " + zoneID);
                 System.out.println("Lot Name: " + lotName);
                 System.out.println("Availability Status: " + availabilityStatus);
                 System.out.println("--------------------------");
