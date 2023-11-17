@@ -90,18 +90,97 @@ public class Vehicles extends WolfPark {
         }
     }
 
-    public static void UpdateVehicle(String car_license_number, String model, String color, String manufacturer,
-            int year)
-            throws SQLException {
+    // public static void UpdateVehicle(String car_license_number, String model, String color, String manufacturer,
+    //         int year)
+    //         throws SQLException {
+    //     Connection connection = connectToDatabase(jdbcURL, user, pswd);
+    //     try {
+    //         String sql = "UPDATE vehicles SET model=?, color=?, manufacturer=?, year=? WHERE car_license_number = ?";
+    //         PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    //         preparedStatement.setString(1, model);
+    //         preparedStatement.setString(2, color);
+    //         preparedStatement.setString(3, manufacturer);
+    //         preparedStatement.setInt(4, year);
+    //         preparedStatement.setString(5, car_license_number);
+    //         preparedStatement.executeUpdate();
+    //     } catch (SQLException e) {
+    //         e.printStackTrace();
+    //     } finally {
+    //         close(connection);
+    //     }
+    // }
+    public static void updateVehicleDriverId(String car_license_number, String driverId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
+
         try {
-            String sql = "UPDATE vehicles SET model=?, color=?, manufacturer=?, year=? WHERE car_license_number = ?";
+            String sql = "UPDATE vehicles SET driver_id=? WHERE car_license_number = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, driverId);
+            preparedStatement.setString(2, car_license_number);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void updateVehicleModel(String car_license_number, String model) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+
+        try {
+            String sql = "UPDATE vehicles SET model=? WHERE car_license_number = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, model);
-            preparedStatement.setString(2, color);
-            preparedStatement.setString(3, manufacturer);
-            preparedStatement.setInt(4, year);
-            preparedStatement.setString(5, car_license_number);
+            preparedStatement.setString(2, car_license_number);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void updateVehicleColor(String car_license_number, String color) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+
+        try {
+            String sql = "UPDATE vehicles SET color=? WHERE car_license_number = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, color);
+            preparedStatement.setString(2, car_license_number);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void updateVehicleManufacturer(String car_license_number, String manufacturer) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+
+        try {
+            String sql = "UPDATE vehicles SET manufacturer=? WHERE car_license_number = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, manufacturer);
+            preparedStatement.setString(2, car_license_number);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+    
+    public static void updateVehicleYear(String car_license_number, int year) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+
+        try {
+            String sql = "UPDATE vehicles SET year=? WHERE car_license_number = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, year);
+            preparedStatement.setString(2, car_license_number);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

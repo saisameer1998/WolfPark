@@ -35,7 +35,6 @@ class WolfPark {
                     handleSpaceOperations();
                 case 7:
                     handleCitationOperations();
-                    // Add cases for other operations as per the menu
                 case 0:
                     System.out.println("Exiting...");
                     break;
@@ -79,12 +78,43 @@ class WolfPark {
                     break;
                 case 2:
                     System.out.println("Updating driver information...");
-                    System.out.print("Enter driver ID to update: ");
-                    driverId = scanner.nextLine();
-                    System.out.print("Enter new driver name: ");
-                    driverName = scanner.nextLine();
-                    Driver.updateDriverInfo(driverId, driverName);
-                    // Add more updates
+                    System.out.println("What do you want to update: ");
+                    Menu.displayDriverUpdateMenu();
+                    int choice2 = scanner.nextInt();
+
+                    switch (choice2) {
+                        case 1:
+                            System.out.println("Updating driver name...");
+                            System.out.print("Enter driver ID to update: ");
+                            driverId = scanner.nextLine();
+                            System.out.print("Enter new driver name: ");
+                            driverName = scanner.nextLine();
+                            Driver.updateDriverName(driverId, driverName);
+                            break;
+                        case 2:
+                            System.out.println("Updating driver status...");
+                            System.out.print("Enter driver ID to update: ");
+                            driverId = scanner.nextLine();
+                            System.out.print("Enter new driver status: ");
+                            driverStatus = scanner.nextLine();
+                            Driver.updateDriverStatus(driverId, driverStatus);
+                            break;
+                        case 3:
+                            System.out.println("Updating driver disability...");
+                            System.out.print("Enter driver ID to update: ");
+                            driverId = scanner.nextLine();
+                            System.out.print("Enter new driver disability: ");
+                            driverDisability = scanner.nextLine();
+                            Driver.updateDriverDisability(driverId, driverDisability);
+                            break;
+                        case 0:
+                            System.out.println("Exiting driver update operations...");
+                            Menu.displayDriverMenu();
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please enter a valid option.");
+                            break;
+                    }
                     break;
                 case 3:
                     System.out.println("Deleting driver...");
@@ -135,8 +165,8 @@ class WolfPark {
                 case 1:
                     System.out.println("Getting vehicle information...");
                     System.out.println("Enter car license number: ");
-                    String driverID = scanner.nextLine();
-                    Vehicles.GetVehicleInfo(driverID);
+                    driverId = scanner.nextLine();
+                    Vehicles.GetVehicleInfo(driverId);
                     // DISPLAY RESULT
                     break;
                 case 2:
@@ -164,19 +194,59 @@ class WolfPark {
                     break;
                 case 4:
                     System.out.println("Updating vehicle information...");
-                    System.out.print("Enter car license number of the vehicle to update: ");
-                    carLicenseNumber = scanner.nextLine();
-                    System.out.print("Enter updated model: ");
-                    model = scanner.nextLine();
-                    System.out.print("Enter updated color: ");
-                    color = scanner.nextLine();
-                    System.out.print("Enter updated manufacturer: ");
-                    manufacturer = scanner.nextLine();
-                    System.out.print("Enter updated year: ");
-                    year = scanner.nextInt();
-                    scanner.nextLine();
-                    // Sepearate Updates
-                    Vehicles.UpdateVehicle(carLicenseNumber, model, color, manufacturer, year);
+                    System.out.println("What do you want to update: ");
+                    Menu.displayVehicleUpdateMenu();
+                    int choice2 = scanner.nextInt();
+
+                    switch (choice2) {
+                        case 1:
+                            System.out.println("Updating driver ID...");
+                            System.out.print("Enter car license number of the vehicle to update: ");
+                            carLicenseNumber = scanner.nextLine();
+                            System.out.print("Enter updated driver ID: ");
+                            driverId = scanner.nextLine();
+                            Vehicles.updateVehicleDriverId(carLicenseNumber, driverId);
+                            break;
+                        case 2:
+                            System.out.println("2. Updating vehicle model...");
+                            System.out.print("Enter car license number of the vehicle to update: ");
+                            carLicenseNumber = scanner.nextLine();
+                            System.out.print("Enter updated vehicle model: ");
+                            model = scanner.nextLine();
+                            Vehicles.updateVehicleModel(carLicenseNumber, model);
+                            break;
+                        case 3:
+                            System.out.println("3. Updating vehicle color...");
+                            System.out.print("Enter car license number of the vehicle to update: ");
+                            carLicenseNumber = scanner.nextLine();
+                            System.out.print("Enter updated vehicle color: ");
+                            color = scanner.nextLine();
+                            Vehicles.updateVehicleColor(carLicenseNumber, color);
+                            break;
+                        case 4:
+                            System.out.println("4. Updating vehicle manufacturer...");
+                            System.out.print("Enter car license number of the vehicle to update: ");
+                            carLicenseNumber = scanner.nextLine();
+                            System.out.print("Enter updated vehicle manufacturer: ");
+                            manufacturer = scanner.nextLine();
+                            Vehicles.updateVehicleManufacturer(carLicenseNumber, manufacturer);
+                            break;
+                        case 5:
+                            System.out.println("6. Updating vehicle year...");
+                            System.out.print("Enter car license number of the vehicle to update: ");
+                            carLicenseNumber = scanner.nextLine();
+                            System.out.print("Enter updated vehicle year: ");
+                            year = scanner.nextInt();
+                            Vehicles.updateVehicleYear(carLicenseNumber, year);
+                            break;
+                        case 0:
+                            System.out.println("Exiting vehicle update operations...");
+                            Menu.displayVehicleMenu();
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please enter a valid option.");
+                            break;
+                    }
                     break;
                 case 0:
                     System.out.println("Exiting vehicle operations...");
@@ -257,7 +327,7 @@ class WolfPark {
                     System.out.print("Permit type: ");
                     permitType = scanner.nextLine();
                     // Separate Updates
-                    Permits.UpdatePermitInfo(lotName, permitId);
+                    // Permits.UpdatePermitInfo(lotName, permitId);
                     break;
                 case 3:
                     System.out.println("Deleting a permit...");
@@ -493,7 +563,6 @@ class WolfPark {
                 case 2:
                     System.out.println("What do you want to update: ");
                     Menu.displayCitationUpdateMenu();
-                    System.out.print("Enter your choice: ");
                     int choice2 = scanner.nextInt();
 
                     switch (choice2) {

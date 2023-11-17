@@ -62,12 +62,42 @@ public class Driver extends WolfPark {
 }
 
 
-    public static void updateDriverInfo(String driver_id, String name) throws SQLException {
+    public static void updateDriverName(String driver_id, String name) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "UPDATE drivers SET name = ? WHERE driver_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, name);
+            preparedStatement.setString(2, driver_id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void updateDriverStatus(String driver_id, String status) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "UPDATE drivers SET status = ? WHERE driver_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, status);
+            preparedStatement.setString(2, driver_id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }
+
+    public static void updateDriverDisability(String driver_id, String disability) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        try {
+            String sql = "UPDATE drivers SET disability = ? WHERE driver_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, disability);
             preparedStatement.setString(2, driver_id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
