@@ -11,14 +11,6 @@ public class ParkingLot extends WolfPark {
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
-    // String lotName;
-    // String address;
-
-    // public ParkingLot(String lotName, String address) {
-    // this.lotName = lotName;
-    // this.address = address;
-    // }
-
     public static void addParkingLot(String lotName, String address) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
@@ -62,6 +54,29 @@ public class ParkingLot extends WolfPark {
             close(connection);
         }
     }
+
+    public static void getParkingLotInfo(String lotName) throws SQLException {
+        Connection connection = connectToDatabase(jdbcURL, user, pswd);
+        ResultSet result = null;
+        try {
+            String sql = "SELECT * WHERE lot_name= ? ";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, lotName);
+            result = preparedStatement.executeQuery();
+            while (result.next()) {
+                String lotNames = result.getString("lot_name");
+                String address = result.getString("address");
+
+                System.out.println("Lot Name: " + lotNames);
+                System.out.println("Address: " + address);
+                System.out.println("--------------------------");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+    }  
 
     private static Connection connectToDatabase(String jdbcURL, String user, String pswd)
             throws SQLException {

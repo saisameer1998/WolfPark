@@ -8,18 +8,6 @@ public class Driver extends WolfPark {
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
-    // String driver_id;
-    // String name;
-    // String status;
-    // String disability;
-
-    // public Driver(String driver_id, String name, String status, String
-    // disability) {
-    // this.driver_id = driver_id;
-    // this.name = name;
-    // this.status = status;
-    // this.disability = disability;
-    // }
     public static void getDriverInfo(String driver_id) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
@@ -153,13 +141,13 @@ public class Driver extends WolfPark {
         ResultSet result = null;
 
         try {
-            String sql = "SELECT COUNT(DISTINCT ( d.driver_id ) ) FROM permits p, drivers d WHERE p.driver_id = d.driver_id AND p.lot_name= ? AND d.status = ?;";
+            String sql = "SELECT COUNT(DISTINCT(d.driver_id)) as 'driver_count' FROM permits p, drivers d WHERE p.driver_id = d.driver_id AND p.lot_name= ? AND d.status = ?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, lot_name);
             preparedStatement.setString(2, status);
             result = preparedStatement.executeQuery();
             while (result.next()) {
-            int count = result.getInt(1); // Assuming the count is in the first column
+            int count = result.getInt("driver_count"); // Assuming the count is in the first column
             System.out.println("Employee Permit Count: " + count);
         }
 

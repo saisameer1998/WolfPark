@@ -12,13 +12,6 @@ public class Space extends WolfPark {
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
-    // int spaceNumber;
-    // String spaceType;
-
-    // public Space(int spaceNumber, String spaceType) {
-    // this.spaceNumber = spaceNumber;
-    // this.spaceType = spaceType;
-    // }
     public static void getSpaceInfo(int space_Number) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
@@ -36,15 +29,12 @@ public class Space extends WolfPark {
                 System.out.println("Space Type: " + spaceType);
                 System.out.println("--------------------------");
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             close(connection);
         }
     }
-    
 
     public static void addSpace(int spaceNumber, String spaceType) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
