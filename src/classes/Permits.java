@@ -8,29 +8,6 @@ public class Permits extends WolfPark {
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
-    // String permit_id;
-    // String lot_name;
-    // String zone_id;
-    // String space_type;
-    // String start_date;
-    // String expiration_date;
-    // String expiration_time;
-    // String driver_id;
-    // String permit_type;
-
-    // public void Permits(String permit_id, String lot_name, String zone_id, String space_type, String start_date,
-    //         String expiration_date, String expiration_time, String driver_id, String permit_type) {
-    //     this.permit_id = permit_id;
-    //     this.lot_name = lot_name;
-    //     this.zone_id = zone_id;
-    //     this.space_type = space_type;
-    //     this.start_date = start_date;
-    //     this.expiration_date = expiration_date;
-    //     this.expiration_time = expiration_time;
-    //     this.driver_id = driver_id;
-    //     this.permit_type = permit_type;
-    // }
-
     public static void CreatePermitInfo(String permit_id, String lot_name, String zone_id, String space_type, String start_date,
             String expiration_date, String expiration_time, String driver_id, String permit_type) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
@@ -224,7 +201,6 @@ public class Permits extends WolfPark {
         }
     }
 
-    //Fix Query
     public static boolean IsValidPermit(String permitId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         ResultSet result = null;
