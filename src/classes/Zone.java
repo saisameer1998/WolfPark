@@ -12,12 +12,6 @@ public class Zone extends WolfPark {
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
-    // String zoneId;
-
-    // public Zone(String zoneId) {
-    // this.zoneId = zoneId;
-    // }
-
     public static void addZone(String zoneId) throws SQLException {
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
