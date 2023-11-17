@@ -7,14 +7,6 @@ import java.time.format.DateTimeFormatter;
 
 public class Citation extends WolfPark {
 
-	// String lotName;
-	// String address;
-	//
-	// public ParkingLot(String lotName, String address) {
-	// this.lotName = lotName;
-	// this.address = address;
-	// }
-
 	static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
 	static String user = "sguttha";
 	static String pswd = "Maria@MegaMind1";
@@ -191,7 +183,7 @@ public class Citation extends WolfPark {
 			result = preparedStatement.executeQuery();
 			while (result.next()) {
 				String lotName = result.getString("lot_name");
-				int numCitations = result.getInt(2);
+				int numCitations = result.getInt("Num Citations");
 
 				System.out.println("Lot Name: " + lotName);
 				System.out.println("Number of Citations: " + numCitations);
@@ -216,7 +208,7 @@ public class Citation extends WolfPark {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			result = preparedStatement.executeQuery();
 			while (result.next()) {
-				int numViolatedCars = result.getInt(1);
+				int numViolatedCars = result.getInt("Num Violated Cars");
 
 				System.out.println("Number of Violated Cars: " + numViolatedCars);
 				System.out.println("--------------------------");
