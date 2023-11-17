@@ -141,7 +141,6 @@ public class Permits extends WolfPark {
             throws SQLException {
         Connection connection = null;
         try {
-        	System.out.println("ooooo");
             connection = DriverManager.getConnection(jdbcURL, user, pswd);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -154,6 +153,7 @@ public class Permits extends WolfPark {
         if (conn != null) {
             try {
                 conn.close();
+                System.out.println("Connnection closed");
             } catch (Throwable whatever) {
             }
         }

@@ -396,6 +396,7 @@ class WolfPark {
 
         int spaceNumber;
         String spaceType;
+        String lotName;
 
         do {
             Menu.displaySpaceMenu();
@@ -428,11 +429,14 @@ class WolfPark {
                     break;
                 case 4:
                     System.out.println("Getting space information...");
+//                    System.out.print("Enter space number: ");
+//                    spaceNumber = scanner.nextInt();
+                    System.out.print("Enter lot name: ");
+                    //scanner.next();
+                    lotName = scanner.nextLine();
                     System.out.print("Enter space number: ");
                     spaceNumber = scanner.nextInt();
-                    System.out.print("Enter space type: ");
-                    spaceType = scanner.nextLine();
-                    Space.getAvailableSpace(spaceNumber, spaceType);
+                    Space.getAvailableSpace(spaceNumber, lotName);
                     // Display Result
                     break;
                 case 0:

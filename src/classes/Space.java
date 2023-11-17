@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class Space extends WolfPark {
 
-    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:330/";
+    static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
@@ -72,13 +72,15 @@ public class Space extends WolfPark {
                     "WHERE sa.space_number = s.space_number " +
                     "AND sa.lot_name = ? " +
                     "AND sa.space_number = ? " +
-                    "AND sa.availability_status = 'Available'";
+                    "AND sa.availability_status = 'YES'";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, lotName);
             preparedStatement.setInt(2, spaceNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 availableSpace = resultSet.getInt(1);
+                System.out.println(preparedStatement);
+                System.out.println(availableSpace);
             }
         } catch (SQLException e) {
             e.printStackTrace();
