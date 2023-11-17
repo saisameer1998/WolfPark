@@ -1,3 +1,10 @@
+/**
+ * The Zone class manages information related to parking zones in a parking system.
+ * It extends the WolfPark class to inherit any common functionality.
+ * The class provides methods to add, delete, and retrieve information about parking zones
+ * in a MariaDB database.
+ */
+
 package classes;
 
 import java.sql.Connection;
@@ -8,11 +15,19 @@ import java.sql.SQLException;
 
 public class Zone extends WolfPark {
 
+    // Database connection details
     static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
     static String user = "sguttha";
     static String pswd = "Maria@MegaMind1";
 
     public static void addZone(String zoneId) throws SQLException {
+        /**
+         * Adds a new parking zone with the specified ID to the database.
+         *
+         * @param zoneId The ID of the new parking zone.
+         * @throws SQLException If a database access error occurs.
+         */
+
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             // Start the transaction
@@ -48,6 +63,13 @@ public class Zone extends WolfPark {
     }
 
     public static void deleteZone(String zoneId) throws SQLException {
+        /**
+         * Deletes a parking zone with the specified ID from the database.
+         *
+         * @param zoneId The ID of the parking zone to be deleted.
+         * @throws SQLException If a database access error occurs.
+         */
+
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
             String sql = "DELETE FROM zones WHERE zone_id = ?";
@@ -62,6 +84,13 @@ public class Zone extends WolfPark {
     }
 
     public static String getZoneInfo(String zoneId) throws SQLException {
+        /**
+         * Retrieves and returns information about a parking zone based on its ID.
+         *
+         * @param zoneId The ID of the parking zone to retrieve information for.
+         * @return A String representing the ID of the retrieved parking zone.
+         * @throws SQLException If a database access error occurs.
+         */
         String zoneInfo = null;
         Connection connection = connectToDatabase(jdbcURL, user, pswd);
         try {
@@ -84,6 +113,15 @@ public class Zone extends WolfPark {
 
     private static Connection connectToDatabase(String jdbcURL, String user, String pswd)
             throws SQLException {
+        /**
+     * Establishes a connection to the MariaDB database.
+     *
+     * @param jdbcURL The JDBC URL of the database.
+     * @param user    The database username.
+     * @param pswd    The database password.
+     * @return A Connection object representing the database connection.
+     * @throws SQLException If a database access error occurs.
+     */
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(jdbcURL, user, pswd);
@@ -95,6 +133,11 @@ public class Zone extends WolfPark {
     }
 
     private static void close(Connection conn) {
+        /**
+     * Closes the provided database connection.
+     *
+     * @param conn The database connection to be closed.
+     */
         if (conn != null) {
             try {
                 conn.close();
