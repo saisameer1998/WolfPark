@@ -81,7 +81,6 @@ public class Driver extends WolfPark {
         } finally {
             close(connection);
         }
-        // Implement 
     }
 
     private static Connection connectToDatabase(String jdbcURL, String user, String pswd)

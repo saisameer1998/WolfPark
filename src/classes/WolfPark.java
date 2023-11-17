@@ -93,13 +93,13 @@ class WolfPark {
                     Driver.deleteDriver(driverId);
                     break;
                 case 4:
-                    // Implement
                     System.out.println("Getting employee permit count");
                     System.out.println("Enter Lot name");
                     lotName = scanner.nextLine();
                     System.out.println("Enter Driver Status");
                     driverStatus = scanner.nextLine();
                     Driver.getEmpPermCount(lotName, driverStatus);
+                    // DISPLAY RESULT
                     break;
                 case 0:
                     System.out.println("Exiting driver operations...");
@@ -137,7 +137,7 @@ class WolfPark {
                     System.out.println("Enter car license number: ");
                     String driverID = scanner.nextLine();
                     Vehicles.GetVehicleInfo(driverID);
-                    // Print Result
+                    // DISPLAY RESULT
                     break;
                 case 2:
                     System.out.println("Adding a new vehicle...");
@@ -270,14 +270,14 @@ class WolfPark {
                     System.out.print("Enter permit ID: ");
                     permitId = scanner.nextLine();
                     Permits.GetPermitInfo(permitId);
-                    // Display Result
+                    // DISPLAY RESULT
                     break;
                 case 5:
                     System.out.println("Checking if the permit is valid...");
                     System.out.print("Enter permit ID: ");
                     permitId = scanner.nextLine();
                     boolean isValid = Permits.IsValidPermit(permitId);
-                    // Method call needs to be fixed
+                    // FIX METHOD CALL
                     break;
                 case 0:
                     System.out.println("Exiting permit operations...");
@@ -382,7 +382,7 @@ class WolfPark {
                     System.out.print("Enter zone ID to get information: ");
                     zoneId = scanner.nextLine();
                     Zone.getZoneInfo(zoneId);
-                    // Display Results
+                    // DISPLAY RESULT
                     break;
                 case 0:
                     System.out.println("Exiting zone operations...");
@@ -440,7 +440,7 @@ class WolfPark {
                     System.out.print("Enter space type: ");
                     spaceType = scanner.nextLine();
                     Space.getAvailableSpace(spaceNumber, spaceType);
-                    // Display Result
+                    // DISPLAY RESULT
                     break;
                 case 0:
                     System.out.println("Exiting space operations...");
@@ -586,6 +586,7 @@ class WolfPark {
                     System.out.print("Enter end date (yyyy-MM-dd): ");
                     endDate = scanner.nextLine();
                     Citation.getCitationReport(startDate, endDate);
+                    // DISPLAY RESULT
                     break;
                 case 6:
                     System.out.println("Getting violated cars information...");
@@ -594,6 +595,7 @@ class WolfPark {
                     System.out.print("Enter end date (yyyy-MM-dd): ");
                     endDate = scanner.nextLine();
                     Citation.getViolatedCarsInfo(startDate, endDate);
+                    // DISPLAY RESULT
                     break;
                 case 0:
                     System.out.println("Exiting citation operations...");
