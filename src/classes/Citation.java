@@ -1,3 +1,9 @@
+/**
+ * The Citation class provides methods to interact with a MariaDB database
+ * to manage and retrieve information related to parking citations.
+ * It extends the WolfPark class, indicating a potential inheritance relationship.
+ */
+
 package classes;
 
 import java.sql.*;
@@ -7,12 +13,27 @@ import java.time.format.DateTimeFormatter;
 
 public class Citation extends WolfPark {
 
+<<<<<<< HEAD
+=======
+	// Database connection details
+>>>>>>> 57c9a282e5912558949d6fb6721ac4930a6e5a9e
 	static String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/sguttha";
 	static String user = "sguttha";
 	static String pswd = "Maria@MegaMind1";
 
 	public static void generateCitation(String citationNumber, String carLicenseNumber, String lotName,
 			String category, float fee, String paymentStatus) throws SQLException {
+		/**
+     		* Generates a new citation entry in the database with the specified details.
+     		*
+     		* @param citationNumber    The unique identifier for the citation.
+     		* @param carLicenseNumber  The license number of the cited vehicle.
+     		* @param lotName           The name of the parking lot where the citation occurred.
+     		* @param category          The category of the citation.
+     		* @param fee               The fee associated with the citation.
+    	 	* @param paymentStatus     The payment status of the citation.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -39,6 +60,13 @@ public class Citation extends WolfPark {
 	}
 
 	public static void updateCitationCarLsncNum(String citationNumber, String carLicenseNumber) throws SQLException {
+		/**
+     		* Updates the license number of a citation in the database.
+     		*
+     		* @param citationNumber    The unique identifier for the citation.
+     		* @param carLicenseNumber  The new license number for the cited vehicle.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -55,6 +83,13 @@ public class Citation extends WolfPark {
 	}
 
 	public static void updateCitationLotName(String citationNumber, String lotName) throws SQLException {
+		/**
+     		* Updates the lot name of a citation in the database.
+     		*
+     		* @param citationNumber    The unique identifier for the citation.
+     		* @param lotName           The new lot name for the cited vehicle.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -71,6 +106,13 @@ public class Citation extends WolfPark {
 	}
 
 	public static void updateCitationCategory(String citationNumber, String category) throws SQLException {
+		/**
+     		* Updates the category of a citation in the database.
+     		*
+     		* @param citationNumber    The unique identifier for the citation.
+     		* @param category          The new category for the cited vehicle.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -87,6 +129,13 @@ public class Citation extends WolfPark {
 	}
 
 	public static void updateCitationFee(String citationNumber, float fee) throws SQLException {
+		/**
+     		* Updates the fee of a citation in the database.
+     		*
+     		* @param citationNumber    The unique identifier for the citation.
+     		* @param fee               The new fee for the cited vehicle.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -103,6 +152,13 @@ public class Citation extends WolfPark {
 	}
 
 	public static void updateCitationPymntStatus(String citationNumber, String paymentStatus) throws SQLException {
+		/**
+     		* Updates the payment status of a citation in the database.
+     		*
+     		* @param citationNumber    The unique identifier for the citation.
+     		* @param paymentStatus     The new payment status for the cited vehicle.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -121,6 +177,13 @@ public class Citation extends WolfPark {
 	}
 
 	public static void updateCitationDate(String citationNumber, String citationDate) throws SQLException {
+		/**
+     		* Updates the citation date of a citation in the database.
+     		*
+     		* @param citationNumber    The unique identifier for the citation.
+     		* @param citationDate      The new citation date for the cited vehicle.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -137,6 +200,13 @@ public class Citation extends WolfPark {
 	}
 
 	public static void updateCitationTime(String citationNumber, String citationTime) throws SQLException {
+		/**
+     		* Updates the citation time of a citation in the database.
+     		*
+     		* @param citationNumber    The unique identifier for the citation.
+     		* @param citationTime      The new citation time for the cited vehicle.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -153,6 +223,12 @@ public class Citation extends WolfPark {
 	}
 
 	public static void deleteCitation(String citationNumber) throws SQLException {
+		/**
+     		* Deletes a citation entry from the database.
+     		*
+     		* @param citationNumber    The unique identifier for the citation to be deleted.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		try {
@@ -168,15 +244,42 @@ public class Citation extends WolfPark {
 	}
 
 	public static void payCitationFee(String citationNumber) throws SQLException {
+<<<<<<< HEAD
+=======
+		/**
+ 		* Updates the payment status of a citation to "PAID" in the database.
+ 		*
+ 		* This method takes a citation number as a parameter and calls the updateCitationPymntStatus method to set the payment 
+ 		* status to "PAID"
+		* @param citationNumber    The unique identifier for the citation to be marked as paid.
+		* @throws SQLException     If a database access error occurs.
+ 		*/
+
+>>>>>>> 57c9a282e5912558949d6fb6721ac4930a6e5a9e
 		updateCitationPymntStatus(citationNumber, "PAID");
 	}
 
 	public static void appealCitationFee(String citationNumber) throws SQLException {
+		/**
+ 		* Updates the payment status of a citation to "APPEAL" in the database.
+ 		*
+ 		* This method takes a citation number as a parameter and calls the updateCitationPymntStatus method to set the payment 
+ 		* status to "APPEAL"
+		* @param citationNumber    The unique identifier for the citation to be marked as paid.
+		* @throws SQLException     If a database access error occurs.
+ 		*/
 
 		updateCitationPymntStatus(citationNumber, "APPEAL");
 	}
 
-	public static ResultSet getCitationReport(String startDate, String endDate) throws SQLException {
+	public static void getCitationReport(String startDate, String endDate) throws SQLException {
+		/**
+     		* Retrieves a citation report for a specified date range and prints the information.
+     		*
+     		* @param startDate         The start date of the report.
+     		* @param endDate           The end date of the report.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		ResultSet result = null;
@@ -195,7 +298,7 @@ public class Citation extends WolfPark {
 				System.out.println("Lot Name: " + lotName);
 				System.out.println("Number of Citations: " + numCitations);
 				System.out.println("--------------------------");
-        }
+        		}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -205,7 +308,14 @@ public class Citation extends WolfPark {
 		return result;
 	}
 
-	public static ResultSet getViolatedCarsInfo(String startDate, String endDate) throws SQLException {
+	public static void getViolatedCarsInfo(String startDate, String endDate) throws SQLException {
+		/**
+     		* Retrieves information about violated cars within a specified date range and prints the information.
+     		*
+     		* @param startDate         The start date of the violation report.
+     		* @param endDate           The end date of the violation report.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
 
 		Connection connection = connectToDatabase(jdbcURL, user, pswd);
 		ResultSet result = null;
@@ -219,7 +329,7 @@ public class Citation extends WolfPark {
 
 				System.out.println("Number of Violated Cars: " + numViolatedCars);
 				System.out.println("--------------------------");
-        }
+        		}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -231,6 +341,16 @@ public class Citation extends WolfPark {
 
 	private static Connection connectToDatabase(String jdbcURL, String user, String pswd)
 			throws SQLException {
+		/**
+     		* Establishes a connection to the MariaDB database.
+     		*
+     		* @param jdbcURL   The JDBC URL for the database.
+     		* @param user      The username for database access.
+     		* @param pswd      The password for database access.
+     		* @return          A Connection object representing the database connection.
+     		* @throws SQLException     If a database access error occurs.
+     		*/
+
 		Connection connection = null;
 		try {
 			connection = DriverManager.getConnection(jdbcURL, user, pswd);
@@ -242,6 +362,12 @@ public class Citation extends WolfPark {
 	}
 
 	private static void close(Connection conn) {
+		/**
+     		* Closes the given database connection.
+     		*
+     		* @param conn  The Connection object to be closed.
+     		*/
+
 		if (conn != null) {
 			try {
 				conn.close();
