@@ -78,13 +78,43 @@ class WolfPark {
                     Driver.addDriver(driverId, driverName, driverStatus, driverDisability);
                     break;
                 case 2:
-                    System.out.println("Updating driver information...");
-                    System.out.print("Enter driver ID to update: ");
-                    driverId = scanner.nextLine();
-                    System.out.print("Enter new driver name: ");
-                    driverName = scanner.nextLine();
-                    Driver.updateDriverInfo(driverId, driverName);
-                    // Add more updates
+                    System.out.println("What do you want to update: ");
+                    Menu.displayDriverUpdateMenu();
+                    int choice2 = scanner.nextInt();
+
+                    switch (choice2) {
+                        case 1:
+                            System.out.println("Updating driver name...");
+                            System.out.print("Enter driver ID to update: ");
+                            driverId = scanner.nextLine();
+                            System.out.print("Enter new driver name: ");
+                            driverName = scanner.nextLine();
+                            Driver.updateDriverName(driverId, driverName);
+                            break;
+                        case 2:
+                            System.out.println("Updating driver status...");
+                            System.out.print("Enter driver ID to update: ");
+                            driverId = scanner.nextLine();
+                            System.out.print("Enter new driver status: ");
+                            driverStatus = scanner.nextLine();
+                            Driver.updateDriverStatus(driverId, driverStatus);
+                            break;
+                        case 3:
+                            System.out.println("Updating driver disability...");
+                            System.out.print("Enter driver ID to update: ");
+                            driverId = scanner.nextLine();
+                            System.out.print("Enter new driver disability: ");
+                            driverDisability = scanner.nextLine();
+                            Driver.updateDriverDisability(driverId, driverDisability);
+                            break;
+                        case 0:
+                            System.out.println("Exiting driver update operations...");
+                            Menu.displayCitationMenu();
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please enter a valid option.");
+                            break;
+                    }
                     break;
                 case 3:
                     System.out.println("Deleting driver...");
@@ -493,7 +523,6 @@ class WolfPark {
                 case 2:
                     System.out.println("What do you want to update: ");
                     Menu.displayCitationUpdateMenu();
-                    System.out.print("Enter your choice: ");
                     int choice2 = scanner.nextInt();
 
                     switch (choice2) {
