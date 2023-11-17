@@ -307,27 +307,83 @@ class WolfPark {
                     break;
                 case 2:
                     System.out.println("Updating permit information...");
-                    System.out.print("Enter permit ID of the permit to update: ");
-                    permitId = scanner.nextLine();
-                    System.out.println("Enter updated permit information:");
-                    System.out.print("Lot name: ");
-                    lotName = scanner.nextLine();
-                    System.out.print("Zone ID: ");
-                    zoneId = scanner.nextLine();
-                    System.out.print("Space type: ");
-                    spaceType = scanner.nextLine();
-                    System.out.print("Start date (YYYY-MM-DD): ");
-                    startDate = scanner.nextLine();
-                    System.out.print("Expiration date (YYYY-MM-DD): ");
-                    expirationDate = scanner.nextLine();
-                    System.out.print("Expiration time: ");
-                    expirationTime = scanner.nextLine();
-                    System.out.print("Driver ID: ");
-                    driverId = scanner.nextLine();
-                    System.out.print("Permit type: ");
-                    permitType = scanner.nextLine();
-                    // Separate Updates
-                    // Permits.UpdatePermitInfo(lotName, permitId);
+                    System.out.println("What do you want to update: ");
+                    Menu.displayDriverUpdateMenu();
+                    int choice2 = scanner.nextInt();
+
+                    switch (choice2) {
+                        case 1:
+                            System.out.println("Updating lot name...");
+                            System.out.print("Enter permit ID of the permit to update: ");
+                            permitId = scanner.nextLine();
+                            System.out.print("Lot name: ");
+                            lotName = scanner.nextLine();
+                            Permits.UpdatePermitLotName(lotName, permitId);
+                            break;
+                        case 2:
+                            System.out.println("Updating zone ID...");
+                            System.out.print("Enter permit ID of the permit to update: ");
+                            permitId = scanner.nextLine();
+                            System.out.print("Zone ID: ");
+                            zoneId = scanner.nextLine();
+                            Permits.UpdatePermitZoneID(zoneId, permitId);
+                            break;
+                        case 3:
+                            System.out.println("Updating space type...");
+                            System.out.print("Enter permit ID of the permit to update: ");
+                            permitId = scanner.nextLine();
+                            System.out.print("Space type: ");
+                            spaceType = scanner.nextLine();
+                            Permits.UpdatePermitSpaceType(spaceType, permitId);
+                            break;
+                        case 4:
+                            System.out.println("Updating start date...");
+                            System.out.print("Enter permit ID of the permit to update: ");
+                            permitId = scanner.nextLine();
+                            System.out.print("Start date (YYYY-MM-DD): ");
+                            startDate = scanner.nextLine();
+                            Permits.UpdatePermitStartDate(startDate, permitId);
+                            break;
+                        case 5:
+                            System.out.println("Updating expiration date...");
+                            System.out.print("Enter permit ID of the permit to update: ");
+                            permitId = scanner.nextLine();
+                            System.out.print("Expiration date (YYYY-MM-DD): ");
+                            expirationDate = scanner.nextLine();
+                            Permits.UpdatePermitExpirationDate(expirationDate, permitId);
+                            break;
+                        case 6:
+                            System.out.println("Updating expiration time...");
+                            System.out.print("Enter permit ID of the permit to update: ");
+                            permitId = scanner.nextLine();
+                            System.out.print("Expiration time: ");
+                            expirationTime = scanner.nextLine();
+                            Permits.UpdatePermitExpirationTime(expirationTime, permitId);
+                            break;
+                        case 7:
+                            System.out.println("Updating driver ID...");
+                            System.out.print("Enter permit ID of the permit to update: ");
+                            permitId = scanner.nextLine();
+                            System.out.print("Driver ID: ");
+                            driverId = scanner.nextLine();
+                            Permits.UpdatePermitDriverId(driverId, permitId);
+                            break;
+                        case 8:
+                            System.out.println("Updating permit type...");
+                            System.out.print("Enter permit ID of the permit to update: ");
+                            permitId = scanner.nextLine();
+                            System.out.print("Permit type: ");
+                            permitType = scanner.nextLine();
+                            Permits.UpdatePermitPermitType(permitType, permitId);
+                            break;
+                        case 0:
+                            System.out.println("Exiting permit update operations...");
+                            Menu.displayPermitMenu();
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please enter a valid option.");
+                            break;
+                    }
                     break;
                 case 3:
                     System.out.println("Deleting a permit...");
