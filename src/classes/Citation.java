@@ -297,8 +297,6 @@ public class Citation extends WolfPark {
 		} finally {
 			close(connection);
 		}
-
-		return result;
 	}
 
 	public static void getViolatedCarsInfo(String startDate, String endDate) throws SQLException {
@@ -328,8 +326,6 @@ public class Citation extends WolfPark {
 		} finally {
 			close(connection);
 		}
-
-		return result;
 	}
 
 	private static Connection connectToDatabase(String jdbcURL, String user, String pswd)
